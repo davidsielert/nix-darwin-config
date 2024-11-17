@@ -10,7 +10,7 @@
 
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
-    substituters = [
+    extra-trusted-substituters = [
       # Query the mirror of USTC first, and then the official cache.
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
@@ -40,9 +40,9 @@
     ...
   }: let
     # TODO replace with your own username, system and hostname
-    username = "__USERNAME__";
-    system = "__SYSTEM__"; # aarch64-darwin or x86_64-darwin
-    hostname = "__HOSTNAME__";
+    username = "davidsielert";
+    system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
+    hostname = "mbp14";
 
     specialArgs =
       inputs
