@@ -47,48 +47,44 @@
   # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    darwin,
-    home-manager,
-    ...
-  }: let
-    # TODO replace with your own username, email, system, and hostname
-    username = "davidsielert";
-    useremail = "david@sielert.com";
-    system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
-    hostname = "mbp14";
+  outputs = { self, nixpkgs, darwin, home-manager,nixvim, ... } @ inputs:
+let
+  # User-specific settings
+  username = "davidsielert";
+  useremail = "david@sielert.com";
+  system = "aarch64-darwin"; # Use "aarch64-darwin" for Apple Silicon, "x86_64-darwin" for Intel Macs
+  hostname = "mbp14";
 
-    specialArgs =
-      inputs
-      // {
-        inherit username useremail hostname;
-      };
-  in {
-    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
-      inherit system specialArgs;
-      modules = [
-        ./modules/nix-core.nix
-        ./modules/system.nix
-        ./modules/apps.nix
-        # ./modules/homebrew-mirror.nix # comment this line if you don't need a homebrew mirror
-        ./modules/host-users.nix
-        ./modules/nixvim/nixvim.nix
-
-        # home manager
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.extraSpecialArgs = specialArgs;
-          home-manager.backupFileExtension = "before-nix";
-          home-manager.users.${username} = import ./home;
-        }
-      ];
-    };
-
-    # nix code formatter
-    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
+  # Package set for the selected system
+  pkgs = import nixpkgs { inherit system; };
+  # Special arguments passed to modules
+  specialArgs = inputs // {
+    inherit username useremail hostname ;
   };
+in
+{
+  darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
+    inherit system specialArgs;
+    modules = [
+      ./modules/nix-core.nix
+      ./modules/system.nix
+      ./modules/apps.nix
+      ./modules/host-users.nix
+      nixvim.nixDarwinModules.nixvim
+      # Home Manager integration
+      home-manager.darwinModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = specialArgs;
+        home-manager.backupFileExtension = "before-nix";
+        home-manager.users.${username} = import ./home;
+      }
+      ./modules/nixvim/nixvim.nix
+    ];
+  };
+
+  # Nix code formatter
+  formatter.${system} = pkgs.alejandra;
+};
 }
