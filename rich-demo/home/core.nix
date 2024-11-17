@@ -33,7 +33,8 @@
     zoxide
     lsd
     poetry
-
+    #sqlFormatter
+    nodePackages.sqlFormatter
   ];
 
   programs = {

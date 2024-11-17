@@ -3,8 +3,8 @@
     enable = true;
     keymaps = {
 
-      next = "<TAB>";
-      previous = "<S-TAB>";
+      next.key = "<TAB>";
+      previous.key = "<S-TAB>";
       # close = "<C-q>";
     };
   };

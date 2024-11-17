@@ -2,14 +2,14 @@
   programs.nixvim.plugins = {
 
     treesitter = {
-      enable = true;
+      enable = false;
       nixvimInjections = true;
       folding = true;
       indent = true;
     };
 
     treesitter-refactor = {
-      enable = true;
+      enable = false;
       highlightDefinitions = {
         enable = true;
         # Set to false if you have an `updatetime` of ~100.
@@ -17,7 +17,7 @@
       };
     };
 
-    hmts.enable = true;
+    hmts.enable = false;
 
     # lspkind = {
     #   enable = true;
@@ -32,12 +32,12 @@
     #       buffer = "[buffer]";
     #       neorg = "[neorg]";
     #       cmp_tabby = "[Tabby]";
-    #     };
+    #     }nb
     #   };
     # };
 
     lsp = {
-      enable = true;
+      enable = false;
       servers = {
         nil_ls.enable = true;
       };
