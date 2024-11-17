@@ -20,9 +20,10 @@
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-24.05";
     # nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.05-darwin";
-
+    nixpkgs-darwin.inputs.nixpkgs.follows = "nixpkgs";
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -38,7 +39,7 @@
     };
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
   };
 
@@ -54,9 +55,15 @@ let
   useremail = "david@sielert.com";
   system = "aarch64-darwin"; # Use "aarch64-darwin" for Apple Silicon, "x86_64-darwin" for Intel Macs
   hostname = "mbp14";
-
+  myOverlays = self: super: {
+        # Adding eslint to the package set
+        eslint = super.nodePackages.eslint or null;
+  };
   # Package set for the selected system
-  pkgs = import nixpkgs { inherit system; };
+  pkgs = import nixpkgs { 
+    inherit system;
+    overlays = [ myOverlays ];
+    };
   # Special arguments passed to modules
   specialArgs = inputs // {
     inherit username useremail hostname ;

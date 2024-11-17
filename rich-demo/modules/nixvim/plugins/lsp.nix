@@ -3,7 +3,7 @@
 
     treesitter = {
       enable = false;
-      nixvimInjections = true;
+      nixvimInjections = false;
       folding = true;
       indent = true;
     };
@@ -11,7 +11,7 @@
     treesitter-refactor = {
       enable = false;
       highlightDefinitions = {
-        enable = true;
+        enable = false;
         # Set to false if you have an `updatetime` of ~100.
         clearOnCursorMove = false;
       };
@@ -39,7 +39,9 @@
     lsp = {
       enable = false;
       servers = {
-        nil_ls.enable = true;
+        nil_ls.enable = false;
+        efm.enable = false;
+
       };
     };
   };
