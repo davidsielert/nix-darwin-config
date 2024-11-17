@@ -1,7 +1,7 @@
 # just is a command runner, Justfile is very similar to Makefile, but simpler.
 
 # TODO update hostname here!
-hostname := "your-hostname"
+hostname := "mbp14"
 
 # List all the just commands
 default:
@@ -19,7 +19,7 @@ darwin-set-proxy:
   sudo python3 scripts/darwin_set_proxy.py
 
 [group('desktop')]
-darwin: darwin-set-proxy
+darwin:
   nix build .#darwinConfigurations.{{hostname}}.system \
     --extra-experimental-features 'nix-command flakes'
 

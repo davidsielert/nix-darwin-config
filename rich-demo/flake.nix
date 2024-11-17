@@ -36,6 +36,10 @@
       url = "github:lnl7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   # The `outputs` function will return all the build results of the flake.
@@ -51,10 +55,10 @@
     ...
   }: let
     # TODO replace with your own username, email, system, and hostname
-    username = "__USERNAME__";
-    useremail = "__USEREMAIL__";
-    system = "__SYSTEM__"; # aarch64-darwin or x86_64-darwin
-    hostname = "__HOSTNAME__";
+    username = "davidsielert";
+    useremail = "david@sielert.com";
+    system = "aarch64-darwin"; # aarch64-darwin or x86_64-darwin
+    hostname = "mbp14";
 
     specialArgs =
       inputs
@@ -68,8 +72,9 @@
         ./modules/nix-core.nix
         ./modules/system.nix
         ./modules/apps.nix
-        ./modules/homebrew-mirror.nix # comment this line if you don't need a homebrew mirror
+        # ./modules/homebrew-mirror.nix # comment this line if you don't need a homebrew mirror
         ./modules/host-users.nix
+        ./modules/nixvim/nixvim.nix
 
         # home manager
         home-manager.darwinModules.home-manager
@@ -77,6 +82,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = specialArgs;
+          home-manager.backupFileExtension = "before-nix";
           home-manager.users.${username} = import ./home;
         }
       ];

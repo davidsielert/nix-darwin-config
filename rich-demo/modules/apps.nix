@@ -42,7 +42,7 @@
     masApps = {
       # TODO Feel free to add your favorite apps here.
 
-      Xcode = 497799835;
+      # Xcode = 497799835;
       # Wechat = 836500024;
       # NeteaseCloudMusic = 944848654;
       # QQ = 451108668;
@@ -60,30 +60,31 @@
     brews = [
       "wget" # download tool
       "curl" # no not install curl via nixpkgs, it's not working well on macOS!
-      "aria2" # download tool
-      "httpie" # http client
+      #"aria2" # download tool
+      #"httpie" # http client
+      "ripgrep"
     ];
 
     # `brew install --cask`
     # TODO Feel free to add your favorite apps here.
     casks = [
-      "firefox"
-      "google-chrome"
-      "visual-studio-code"
+      # "firefox"
+      # "google-chrome"
+      # "visual-studio-code"
 
       # IM & audio & remote desktop & meeting
-      "telegram"
-      "discord"
+      # "telegram"
+      # "discord"
 
       "anki"
-      "iina" # video player
-      "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
+      # "iina" # video player
+      # "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
       "stats" # beautiful system monitor
-      "eudic" # 欧路词典
+      # "eudic" # 欧路词典
 
       # Development
       "insomnia" # REST client
-      "wireshark" # network analyzer
+      # "wireshark" # network analyzer
     ];
   };
 }
