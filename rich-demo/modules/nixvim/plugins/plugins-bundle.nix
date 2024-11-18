@@ -1,5 +1,6 @@
 {
   imports = [
+     ./lz-n.nix
      ./web-devicons.nix
     ./lualine.nix
     ./transparent.nix

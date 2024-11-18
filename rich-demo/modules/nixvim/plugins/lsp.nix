@@ -7,36 +7,39 @@
       folding = true;
       settings = {
         indent.enable = true;
-        };
+        highlight.enable = true;
+        ensure_installed = "all";
+
+      };
     };
 
     treesitter-refactor = {
       enable = true;
       highlightDefinitions = {
         enable = true;
-        # Set to false if you have an `updatetime` of ~100.
+# Set to false if you have an `updatetime` of ~100.
         clearOnCursorMove = false;
       };
     };
 
     hmts.enable = true;
 
-    # lspkind = {
-    #   enable = true;
-    #
-    #   cmp = {
-    #     enable = true;
-    #     menu = {
-    #       nvim_lsp = "[LSP]";
-    #       nvim_lua = "[api]";
-    #       path = "[path]";
-    #       luasnip = "[snip]";
-    #       buffer = "[buffer]";
-    #       neorg = "[neorg]";
-    #       cmp_tabby = "[Tabby]";
-    #     };
-    #   };
-    # };
+# lspkind = {
+#   enable = true;
+#
+#   cmp = {
+#     enable = true;
+#     menu = {
+#       nvim_lsp = "[LSP]";
+#       nvim_lua = "[api]";
+#       path = "[path]";
+#       luasnip = "[snip]";
+#       buffer = "[buffer]";
+#       neorg = "[neorg]";
+#       cmp_tabby = "[Tabby]";
+#     };
+#   };
+# };
 
     lsp = {
       enable = true;
