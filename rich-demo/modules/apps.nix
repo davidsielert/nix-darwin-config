@@ -18,6 +18,8 @@
     # neovim
     git
     just # use Justfile to simplify nix-darwin's commands 
+    llvmPackages.lldb
+
   ];
   environment.variables.EDITOR = "nvim";
 

@@ -1,5 +1,5 @@
 {
  programs.nixvim.plugins.lz-n = {
-  enable = true
+  enable = true;
   };
 }

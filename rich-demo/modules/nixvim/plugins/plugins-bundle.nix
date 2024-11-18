@@ -13,5 +13,6 @@
     ./nix.nix
     ./lsp.nix
     ./cmp.nix
+    ./dap.nix
   ];
 }
