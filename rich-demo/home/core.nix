@@ -34,7 +34,7 @@
     lsd
     poetry
     #sqlFormatter
-     pkgs.nodePackages.eslint
+    eslint
   ];
   programs = {
     # modern vim
