@@ -1,5 +1,6 @@
 {
   imports = [
+     ./web-devicons.nix
     ./lualine.nix
     ./transparent.nix
     ./neotree.nix

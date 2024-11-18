@@ -2,22 +2,24 @@
   programs.nixvim.plugins = {
 
     treesitter = {
-      enable = false;
-      nixvimInjections = false;
+      enable = true;
+      nixvimInjections = true;
       folding = true;
-      indent = true;
+      settings = {
+        indent.enable = true;
+        };
     };
 
     treesitter-refactor = {
-      enable = false;
+      enable = true;
       highlightDefinitions = {
-        enable = false;
+        enable = true;
         # Set to false if you have an `updatetime` of ~100.
         clearOnCursorMove = false;
       };
     };
 
-    hmts.enable = false;
+    hmts.enable = true;
 
     # lspkind = {
     #   enable = true;
@@ -32,16 +34,14 @@
     #       buffer = "[buffer]";
     #       neorg = "[neorg]";
     #       cmp_tabby = "[Tabby]";
-    #     }nb
+    #     };
     #   };
     # };
 
     lsp = {
-      enable = false;
+      enable = true;
       servers = {
-        nil_ls.enable = false;
-        efm.enable = false;
-
+        nil_ls.enable = true;
       };
     };
   };

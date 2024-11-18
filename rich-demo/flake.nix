@@ -21,11 +21,11 @@
   # Each item in `inputs` will be passed as a parameter to the `outputs` function after being pulled and built.
   inputs = {
   # Use a single Nixpkgs input for consistency
-  nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+  nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
   # Home Manager input, following `nixpkgs`
   home-manager = {
-    url = "github:nix-community/home-manager/release-24.05";
+    url = "github:nix-community/home-manager";
     inputs.nixpkgs.follows = "nixpkgs";
   };
 

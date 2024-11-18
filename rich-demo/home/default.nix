@@ -4,9 +4,9 @@
 # import sub modules
   imports = [
     ./shell.nix
-      ./core.nix
-      ./git.nix
-      ./starship.nix
+    ./core.nix
+    ./git.nix
+    ./starship.nix
   ];
 
 # Home Manager needs a bit of information about you and the
@@ -14,7 +14,7 @@
   home = {
     username = username;
     homeDirectory = "/Users/${username}";
-   # This value determines the Home Manager release that your
+# This value determines the Home Manager release that your
 # configuration is compatible with. This helps avoid breakage
 # when a new Home Manager release introduces backwards
 # incompatible changes.
@@ -28,8 +28,8 @@
 # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   programs.neovim = {
-    enable = true;
+    enable = false;
   };
-  
+
 
 }
