@@ -35,6 +35,7 @@
     poetry
     #sqlFormatter
     eslint
+    nodejs_22
   ];
   programs = {
     # modern vim

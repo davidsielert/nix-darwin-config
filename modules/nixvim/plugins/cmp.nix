@@ -16,17 +16,26 @@
       };
 
       sources = [
-        {name = "path";}
-        {name = "nvim_lsp";}
-        {name = "cmp_tabby";}
-        {name = "luasnip";}
-        {
-          name = "buffer";
-          # Words from other open buffers can also be suggested.
-          option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
-        }
-        {name = "neorg";}
+      {name = "path";}
+      {name = "nvim_lsp";}
+      {name = "cmp_tabby";}
+      {name = "luasnip";}
+      {
+        name = "buffer";
+# Words from other open buffers can also be suggested.
+        option.get_bufnrs.__raw = "vim.api.nvim_list_bufs";
+      }
+      {name = "neorg";}
       ];
     };
   };
+  programs.nixvim.plugins.copilot-lua = {
+    enable = true;
+    panel.enabled = false;
+    suggestion.enabled = false;
+  };
+  programs.nixvim.plugins.copilot-cmp = {
+    enable = true;
+  };
 }
+
