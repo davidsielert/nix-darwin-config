@@ -7,6 +7,7 @@
     ./core.nix
     ./git.nix
     ./starship.nix
+     nvf.homeManagerModules.default
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -23,19 +24,9 @@
     # the Home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "24.05";
-    users.${username} = {
-      modules = [ 
-        nvf.homeManagerModules.default
-      ];
-
-    };
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  programs.neovim = {
-    enable = false;
-  };
-
-
+ 
 }
