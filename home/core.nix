@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, inputs, ... }:
+{
   home.packages = with pkgs; [
     # archives
     zip
@@ -31,21 +32,44 @@
     # productivity
     glow # markdown previewer in terminal
     zoxide
-    lsd
-    poetry
     #sqlFormatter
     eslint
     nodejs_22
+    #inputs.Neve.packages.${pkgs.system}.default
+
+    # khanelivim.packages.${system}.default
+    zsh-autoenv
+    zsh-autocomplete
+    awscli2
+    (python312.withPackages (
+      p: with p; [
+        boto3
+        pandas
+        numpy
+      ]
+    ))
+    poetry
+
   ];
   programs = {
+    #nvf = {
+    # enable = true;
+    # # your settings need to go into the settings attribute set
+    # # most settings are documented in the appendix
+    # settings = {
+    #   vim.viAlias = false;
+    #   vim.vimAlias = true;
+    #   vim.lsp = {
+    #     enable = true;
+    #   };
+    # };
     # modern vim
     #neovim = {
     #  enable = true;
     #  defaultEditor = true;
     #  vimAlias = true;
     #};
-
-    # A modern replacement for ‘ls’
+        # A modern replacement for ‘ls’
     # useful in bash/zsh prompt, not in nushell.
     eza = {
       enable = true;

@@ -1,4 +1,4 @@
-{ username, ... }:
+{ username,nvf, ... }:
 
 {
 # import sub modules
@@ -9,6 +9,9 @@
     ./starship.nix
   ];
 
+    modules = [ 
+          nvf.homeManagerModules.default
+    ];
 # Home Manager needs a bit of information about you and the
 # paths it should manage.
   home = {
@@ -23,6 +26,7 @@
 # the Home Manager release notes for a list of state version
 # changes in each release.
     stateVersion = "24.05";
+
   };
 
 # Let Home Manager install and manage itself.

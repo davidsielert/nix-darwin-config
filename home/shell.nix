@@ -1,10 +1,17 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     initExtra = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
     '';
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "MichaelAquilina/zsh-autoswitch-virtualenv"; }
+      ];
+    };
   };
 
   home.shellAliases = {
@@ -12,6 +19,7 @@
     reload = "source ~/.zshrc";
     urldecode = "python3 -c 'import sys, urllib.parse as ul; print(ul.unquote_plus(sys.stdin.read()))'";
     urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
+    vim = "nvim";
   };
   programs.tmux = {
     enable = true;
@@ -87,13 +95,13 @@
 
 
       # run '~/.config/tmux/plugins/tpm/tpm'
-      '';
+    '';
 
-      plugins = with pkgs; [
-        tmuxPlugins.yank
-        tmuxPlugins.sensible
-        tmuxPlugins.catppuccin
+    plugins = with pkgs; [
+      tmuxPlugins.yank
+      tmuxPlugins.sensible
+      tmuxPlugins.catppuccin
 
-      ];
+    ];
   };
 }

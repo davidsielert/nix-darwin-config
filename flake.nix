@@ -46,6 +46,15 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    Neve = {
+      url = "github:redyf/Neve";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    nvf.url = "github:notashelf/nvf";
+
   };
   # The `outputs` function will return all the build results of the flake.
   # A flake can have many use cases and different types of outputs,
@@ -59,6 +68,8 @@
       darwin,
       home-manager,
       khanelivim,
+      Neve,
+      nvf,
       ...
     }@inputs:
     let
@@ -78,7 +89,13 @@
       };
       # Special arguments passed to modules
       specialArgs = inputs // {
-        inherit username useremail hostname;
+        inherit
+          username
+          useremail
+          hostname
+          inputs
+          nvf
+          ;
       };
     in
     {
