@@ -52,43 +52,43 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    mac-app-util.url = "github:hraban/mac-app-util";
 
     nvf.url = "github:notashelf/nvf";
-
   };
   # The `outputs` function will return all the build results of the flake.
   # A flake can have many use cases and different types of outputs,
   # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
   # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
   # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
-  outputs =
-    {
-      self,
-      nixpkgs,
-      darwin,
-      home-manager,
-      khanelivim,
-      Neve,
-      nvf,
-      ...
-    }@inputs:
-    let
-      # User-specific settings
-      username = "davidsielert";
-      useremail = "david@sielert.com";
-      system = "aarch64-darwin"; # Use "aarch64-darwin" for Apple Silicon, "x86_64-darwin" for Intel Macs
-      hostname = "mbp14";
-      myOverlays = self: super: {
-        # Adding eslint to the package set
-        eslint = super.nodePackages.eslint or null;
-      };
-      # Package set for the selected system
-      pkgs = import nixpkgs {
-        inherit system;
-        overlays = [ myOverlays ];
-      };
-      # Special arguments passed to modules
-      specialArgs = inputs // {
+  outputs = {
+    self,
+    nixpkgs,
+    darwin,
+    home-manager,
+    khanelivim,
+    Neve,
+    nvf,
+    ...
+  } @ inputs: let
+    # User-specific settings
+    username = "davidsielert";
+    useremail = "david@sielert.com";
+    system = "aarch64-darwin"; # Use "aarch64-darwin" for Apple Silicon, "x86_64-darwin" for Intel Macs
+    hostname = "mbp14";
+    myOverlays = self: super: {
+      # Adding eslint to the package set
+      eslint = super.nodePackages.eslint or null;
+    };
+    # Package set for the selected system
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = [myOverlays];
+    };
+    # Special arguments passed to modules
+    specialArgs =
+      inputs
+      // {
         inherit
           username
           useremail
@@ -97,30 +97,29 @@
           nvf
           ;
       };
-    in
-    {
-      darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
-        inherit system specialArgs;
-        modules = [
-          ./modules/nix-core.nix
-          ./modules/system.nix
-          ./modules/apps.nix
-          ./modules/host-users.nix
-          # nixvim.nixDarwinModules.nixvim
-          # Home Manager integration
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = specialArgs;
-            home-manager.backupFileExtension = "before-nix";
-            home-manager.users.${username} = import ./home;
-          }
-          # ./modules/nixvim/nixvim.nix
-        ];
-      };
-
-      # Nix code formatter
-      formatter.${system} = pkgs.alejandra;
+  in {
+    darwinConfigurations."${hostname}" = darwin.lib.darwinSystem {
+      inherit system specialArgs;
+      modules = [
+        ./modules/nix-core.nix
+        ./modules/system.nix
+        ./modules/apps.nix
+        ./modules/host-users.nix
+        # nixvim.nixDarwinModules.nixvim
+        # Home Manager integration
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = specialArgs;
+          home-manager.backupFileExtension = "before-nix";
+          home-manager.users.${username} = import ./home;
+        }
+        # ./modules/nixvim/nixvim.nix
+      ];
     };
+
+    # Nix code formatter
+    formatter.${system} = pkgs.alejandra;
+  };
 }

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   ##########################################################################
   #
   #  Install all apps and packages here.
@@ -21,7 +19,6 @@
     just # use Justfile to simplify nix-darwin's commands
     llvmPackages.lldb
     zoxide
-
   ];
   environment.variables.EDITOR = "nvim";
 
@@ -82,7 +79,7 @@
       # IM & audio & remote desktop & meeting
       # "telegram"
       # "discord"
-      "kitty"
+      #"kitty"
       "font-dejavu-sans-mono-nerd-font"
       "anki"
       # "iina" # video player
