@@ -3,6 +3,7 @@
     enable = true;
 
     settings.vim = {
+      useSystemClipboard = true;
       viAlias = true;
       vimAlias = true;
       debugMode = {
@@ -13,6 +14,7 @@
 
       spellcheck = {
         enable = true;
+        languages = ["en"];
       };
 
       lsp = {
@@ -82,8 +84,9 @@
         enable = true;
         nvimWebDevicons.enable = true;
         scrollBar.enable = true;
-        smoothScroll.enable = true;
+        smoothScroll.enable = false;
         cellularAutomaton.enable = false;
+        cellularAutomaton.mappings.makeItRain = null;
         fidget-nvim.enable = true;
         highlight-undo.enable = true;
 
@@ -123,7 +126,7 @@
       };
 
       tabline = {
-        nvimBufferline.enable = true;
+        nvimBufferline.enable = false;
       };
 
       treesitter.context.enable = true;
@@ -133,7 +136,10 @@
         cheatsheet.enable = true;
       };
 
-      telescope.enable = true;
+      telescope = {
+        enable = true;
+        setupOpts.defaults.layout_config.horizontal.prompt_position = "bottom";
+      };
 
       git = {
         enable = true;

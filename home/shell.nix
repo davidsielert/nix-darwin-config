@@ -1,17 +1,35 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    initExtra = ''
+    initExtraFirst = ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
+      ZSH_TMUX_AUTOSTART=''${ZSH_TMUX_AUTOSTART:-true}
+      ZSH_TMUX_AUTOSTART_ONCE=true
+      ZSH_TMUX_DEFAULT_SESSION_NAME=main
+      DISABLE_AUTO_UPDATE=true
+      DISABLE_UPDATE_PROMPT=true
+
     '';
-    zplug = {
+    #zplug = {
+    #  enable = true;
+    #  plugins = [
+    #    {name = "MichaelAquilina/zsh-autoswitch-virtualenv";}
+    #  ];
+    #};
+    oh-my-zsh = {
       enable = true;
       plugins = [
-        { name = "MichaelAquilina/zsh-autoswitch-virtualenv"; }
+        "aliases"
+        "tmux"
+        "virtualenvwrapper"
       ];
     };
+    envExtra = ''
+      export WORKON_HOME="/Users/davidsielert/.virtualenvs"; # Replace with your desired path
+      export VIRTUALENVWRAPPER_PYTHON="${pkgs.python3}/bin/python3"
+      export VIRTUALENVWRAPPER_VIRTUALENV="${pkgs.python3Packages.virtualenv}/bin/virtualenv"
+    '';
   };
 
   home.shellAliases = {
@@ -23,7 +41,13 @@
   };
   programs.tmux = {
     enable = true;
+    shell = "\${pkgs.zsh}/bin/zsh";
     extraConfig = ''
+      set -gu default-command
+      set -g default-shell "$SHELL"
+    '';
+    /*
+       extraConfig = ''
       #set-option -sa terminal-overrides ",xterm*:Tc"
       set -g xterm-keys on
       set-option -sa terminal-features ',xterm-kitty:RGB'
@@ -76,7 +100,6 @@
       bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k' 'select-pane -U'
       bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l' 'select-pane -R'
 
-      tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
 
       if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
           "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
@@ -96,12 +119,16 @@
 
       # run '~/.config/tmux/plugins/tpm/tpm'
     '';
+    */
+
+    keyMode = "vi";
+    mouse = true;
 
     plugins = with pkgs; [
       tmuxPlugins.yank
-      tmuxPlugins.sensible
       tmuxPlugins.catppuccin
-
+      tmuxPlugins.vim-tmux-navigator
+      tmuxPlugins.tmux-fzf
     ];
   };
 }

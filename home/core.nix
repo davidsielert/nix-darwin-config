@@ -1,5 +1,8 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     # archives
     zip
@@ -41,15 +44,17 @@
     zsh-autoenv
     zsh-autocomplete
     awscli2
-    (python312.withPackages (
-      p: with p; [
-        boto3
-        pandas
-        numpy
-      ]
+    (python3.withPackages (
+      p:
+        with p; [
+          boto3
+          pandas
+          numpy
+          #virtualenvwrapper
+        ]
     ))
+    python3Packages.virtualenvwrapper
     poetry
-
   ];
   programs = {
     #nvf = {
@@ -69,7 +74,7 @@
     #  defaultEditor = true;
     #  vimAlias = true;
     #};
-        # A modern replacement for ‘ls’
+    # A modern replacement for ‘ls’
     # useful in bash/zsh prompt, not in nushell.
     eza = {
       enable = true;
