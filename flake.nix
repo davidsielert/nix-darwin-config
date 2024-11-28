@@ -80,6 +80,7 @@
       # Adding eslint to the package set
       eslint = super.nodePackages.eslint or null;
     };
+    sources = import ./npins;
     # Package set for the selected system
     pkgs = import nixpkgs {
       inherit system;
