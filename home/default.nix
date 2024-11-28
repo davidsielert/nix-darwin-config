@@ -9,7 +9,8 @@
     ./core.nix
     ./git.nix
     ./starship.nix
-    ./nvf.nix
+    #./nvf.nix
+    ./programs/terminal/neovim
     nvf.homeManagerModules.default
     inputs.mac-app-util.homeManagerModules.default
   ];
@@ -51,5 +52,8 @@
     enable = true;
     themeFile = "Dracula";
     font.name = "DejaVuSansM Nerd Font Mono";
+    extraConfig = ''
+      map kitty_mod+space no_op
+    '';
   };
 }

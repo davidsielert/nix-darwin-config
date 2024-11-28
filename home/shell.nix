@@ -41,10 +41,10 @@
   };
   programs.tmux = {
     enable = true;
-    shell = "\${pkgs.zsh}/bin/zsh";
+    # shell = "\${pkgs.zsh}/bin/zsh";
     extraConfig = ''
       set -gu default-command
-      set -g default-shell "$SHELL"
+      set -g default-shell "\${pkgs.zsh}/bin/zsh"
     '';
     /*
        extraConfig = ''

@@ -55,6 +55,7 @@
     ))
     python3Packages.virtualenvwrapper
     poetry
+    uv
   ];
   programs = {
     #nvf = {
