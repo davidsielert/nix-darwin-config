@@ -11,7 +11,7 @@
     ./starship.nix
     #./nvf.nix
     ./programs/terminal/neovim
-    nvf.homeManagerModules.default
+    # nvf.homeManagerModules.default
     inputs.mac-app-util.homeManagerModules.default
   ];
 
