@@ -1,5 +1,8 @@
 {
   programs.nvf.settings.vim = {
-    telescope.enable = true;
+    telescope = {
+      enable = true;
+      setupOpts.defaults.layout_config.horizontal.prompt_position = "bottom";
+    };
   };
 }

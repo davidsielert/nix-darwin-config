@@ -33,7 +33,7 @@
       "<leader>f/".action = ":Telescope live_grep<cr>";
 
       # Aerial
-      "<S-O>".action = ":AerialToggle<CR>";
+      # "<S-O>".action = ":AerialToggle<CR>";
 
       # vsnip
       #"<C-jn>".action = "<Plug>(vsnip-jump-next)";
