@@ -1,10 +1,52 @@
 {
   "pins": {
+    "hmts.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/calops/hmts.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "v1.2.5",
+      "revision": "c7ff4c3ad96cd05664b18fb5bbbe2abbd7682dd2",
+      "url": null,
+      "hash": "12x44kcc4bz386cbn7sl7m3lszp0bwlqjdd9ai2yj1kijwh715sp"
+    },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.05pre712942.af51545ec9a4/nixexprs.tar.xz",
       "hash": "0kw997q119nri7sz3d3dwhb47w49g3a3dzc99sizwx14mfc23hjk"
+    },
+    "slides.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/notashelf/slides.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "v0.1.0",
+      "revision": "768fde54ac9de657887b605ee93f11993b26c9c2",
+      "url": null,
+      "hash": "19pzmwpjdsmyy9ygk6ln1i18qihdffp6dgx4vvccyvvz3shabvhx"
+    },
+    "smart-splits.nvim": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "Git",
+        "url": "https://github.com/mrjones2014/smart-splits.nvim"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "version": "v1.7.0",
+      "revision": "00fba7a0e912a8d82da91a3b6b11d641fa500bd8",
+      "url": null,
+      "hash": "126gj8w55vna0n0v7r5dvlgslc67rf87dp9zqifv33nlxixf3rg5"
     }
   },
   "version": 3

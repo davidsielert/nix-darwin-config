@@ -27,7 +27,7 @@ in {
         allowUnsupportedSystem = true;
       };
 
-      overlays = [inputs.self.overlays.default];
+      #overlays = [inputs.self.overlays.default];
     };
 
     _module.args = {

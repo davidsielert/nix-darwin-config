@@ -52,7 +52,7 @@
       imports = [
         ./args.nix
       ];
-      systems = import inputs.systems;
+      systems = ["aarch64-darwin"];
       flake = let
         # User-specific settings
         username = "davidsielert";

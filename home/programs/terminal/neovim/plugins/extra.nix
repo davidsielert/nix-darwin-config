@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit (pkgs.vimPlugins) friendly-snippets aerial-nvim nvim-surround undotree mkdir-nvim ssr-nvim direnv-vim legendary-nvim;
+  inherit (pkgs.vimPlugins) friendly-snippets aerial-nvim nvim-surround undotree mkdir-nvim ssr-nvim direnv-vim legendary-nvim vim-tmux-navigator;
   pluginSources = import ./sources {inherit self pkgs;};
 in {
   programs.nvf.settings.vim.extraPlugins = {
@@ -11,6 +11,10 @@ in {
     direnv = {package = direnv-vim;};
     friendly-snippets = {package = friendly-snippets;};
     mkdir-nvim = {package = mkdir-nvim;};
+    vim-tmux-navigator = {
+      package = vim-tmux-navigator;
+    };
+
     aerial = {
       package = aerial-nvim;
       setup = "require('aerial').setup {}";
