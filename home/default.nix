@@ -10,7 +10,7 @@
     ./git.nix
     ./starship.nix
     #./nvf.nix
-    ./programs/terminal/neovim
+    ./programs/terminal
     # nvf.homeManagerModules.default
     inputs.mac-app-util.homeManagerModules.default
   ];

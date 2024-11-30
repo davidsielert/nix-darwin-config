@@ -6,7 +6,7 @@
       diffview-nvim.enable = true;
 
       vim-wakatime = {
-        enable = false;
+        enable = true;
         cli-package = pkgs.wakatime-cli;
       };
 

@@ -15,6 +15,7 @@
       nix.enable = true;
       html.enable = true;
       css.enable = true;
+      tailwind.lsp.enable = true;
       tailwind.enable = true;
       ts.enable = true;
       go.enable = true;
@@ -24,7 +25,8 @@
       zig.enable = true;
       dart.enable = false;
       elixir.enable = false;
-      svelte.enable = false;
+
+      svelte.enable = true;
       sql.enable = false;
       java = let
         jdtlsCache = "${config.xdg.cacheHome}/jdtls";

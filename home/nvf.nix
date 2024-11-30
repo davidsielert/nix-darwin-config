@@ -167,7 +167,7 @@
 
       utility = {
         ccc.enable = false;
-        vim-wakatime.enable = false;
+        vim-wakatime.enable = true;
         icon-picker.enable = true;
         surround.enable = true;
         diffview-nvim.enable = true;
