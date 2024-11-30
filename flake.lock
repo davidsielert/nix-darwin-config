@@ -17,9 +17,7 @@
     },
     "darwin": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1732603785,
@@ -90,10 +88,7 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": [
-          "mac-app-util",
-          "systems"
-        ]
+        "systems": ["mac-app-util", "systems"]
       },
       "locked": {
         "lastModified": 1731533236,
@@ -128,9 +123,7 @@
     },
     "home-manager": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nixpkgs"]
       },
       "locked": {
         "lastModified": 1732884235,
@@ -185,11 +178,7 @@
     },
     "naersk": {
       "inputs": {
-        "nixpkgs": [
-          "nvf",
-          "rnix-lsp",
-          "nixpkgs"
-        ]
+        "nixpkgs": ["nvf", "rnix-lsp", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1655042882,
@@ -207,14 +196,8 @@
     },
     "nil": {
       "inputs": {
-        "flake-utils": [
-          "nvf",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nvf",
-          "nixpkgs"
-        ],
+        "flake-utils": ["nvf", "flake-utils"],
+        "nixpkgs": ["nvf", "nixpkgs"],
         "rust-overlay": "rust-overlay"
       },
       "locked": {
@@ -2128,16 +2111,8 @@
     },
     "rust-overlay": {
       "inputs": {
-        "flake-utils": [
-          "nvf",
-          "nil",
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nvf",
-          "nil",
-          "nixpkgs"
-        ]
+        "flake-utils": ["nvf", "nil", "flake-utils"],
+        "nixpkgs": ["nvf", "nil", "nixpkgs"]
       },
       "locked": {
         "lastModified": 1714529851,
