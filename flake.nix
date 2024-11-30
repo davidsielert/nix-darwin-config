@@ -42,11 +42,6 @@
 
     nvf.url = "github:notashelf/nvf";
   };
-  # The `outputs` function will return all the build results of the flake.
-  # A flake can have many use cases and different types of outputs,
-  # parameters in `outputs` are defined in `inputs` and can be referenced by their names.
-  # However, `self` is an exception, this special parameter points to the `outputs` itself (self-reference)
-  # The `@` syntax here is used to alias the attribute set of the inputs's parameter, making it convenient to use inside the function.
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
@@ -68,7 +63,8 @@
           inherit system;
           overlays = [myOverlays];
         };
-        nvf = inputs.nvf;
+        inherit (inputs) nvf;
+        #nvf = inputs.nvf;
         # Special arguments passed to modules
         specialArgs =
           inputs

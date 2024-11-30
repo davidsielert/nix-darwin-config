@@ -36,8 +36,8 @@
     glow # markdown previewer in terminal
     zoxide
     #sqlFormatter
-    eslint
-    nodejs_22
+    #eslint
+    #nodejs_22
     #inputs.Neve.packages.${pkgs.system}.default
 
     # khanelivim.packages.${system}.default
