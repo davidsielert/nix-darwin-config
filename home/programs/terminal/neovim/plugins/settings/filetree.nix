@@ -6,7 +6,7 @@
         openOnSetup = true;
 
         mappings = {
-          toggle = "<C-w>";
+          toggle = "<C-e>";
         };
 
         setupOpts = {
@@ -17,7 +17,7 @@
           hijack_cursor = true;
           hijack_directories = {
             enable = true;
-            auto_open = true;
+            auto_open = false;
           };
 
           git = {

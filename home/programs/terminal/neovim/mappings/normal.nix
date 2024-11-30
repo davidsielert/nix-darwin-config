@@ -18,7 +18,8 @@
 
       # Git
       "<leader>gu".action = "<cmd>Gitsigns undo_stage_hunk<CR>";
-      "<leader>g<C-w>".action = "<cmd>Gitsigns preview_hunk<CR>";
+      # This interfere with windows move
+      # "<leader>g<C-w>".action = "<cmd>Gitsigns preview_hunk<CR>";
       "<leader>gp".action = "<cmd>Gitsigns prev_hunk<CR>";
       "<leader>gn".action = "<cmd>Gitsigns next_hunk<CR>";
       "<leader>gP".action = "<cmd>Gitsigns preview_hunk_inline<CR>";
