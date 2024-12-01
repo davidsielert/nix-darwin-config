@@ -5,7 +5,6 @@
 } @ inputs: {
   # import sub modules
   imports = [
-    ./shell.nix
     ./core.nix
     ./git.nix
     ./starship.nix
@@ -33,21 +32,6 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  #programs.nvf = {
-  #  enable = true;
-  #  # your settings need to go into the settings attribute set
-  #  # most settings are documented in the appendix
-  #  settings = {
-  #    vim.viAlias = true;
-  #    vim.vimAlias = true;
-  #    vim.theme.enable = true;
-  #    vim.theme.name = "dracula";
-  #    vim.theme.style = "dark";
-  #    vim.lsp = {
-  #      enable = true;
-  #    };
-  #  };
-  #};
   programs.kitty = {
     enable = true;
     themeFile = "Dracula";
