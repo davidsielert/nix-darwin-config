@@ -3,7 +3,7 @@
     filetree = {
       nvimTree = {
         enable = true;
-        openOnSetup = true;
+        openOnSetup = false;
 
         mappings = {
           toggle = "<C-e>";
@@ -13,10 +13,10 @@
           disable_netrw = true;
           update_focused_file.enable = true;
 
-          hijack_unnamed_buffer_when_opening = true;
+          hijack_unnamed_buffer_when_opening = false;
           hijack_cursor = true;
           hijack_directories = {
-            enable = true;
+            enable = false;
             auto_open = false;
           };
 
@@ -52,8 +52,8 @@
           };
 
           actions = {
-            change_dir.enable = false;
-            change_dir.global = false;
+            change_dir.enable = true;
+            change_dir.global = true;
             open_file.window_picker.enable = true;
           };
         };

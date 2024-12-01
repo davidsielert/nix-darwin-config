@@ -73,7 +73,7 @@ layout {
 			// instead opens a buffer named flake.nix in cwd
 			// which should be the original flake.nix
 			// but is not
-            pane edit="./flake.nix" name="Flake"
+            pane edit="~/nix/flake.nix" name="Flake"
         }
     }
 
@@ -106,14 +106,6 @@ layout {
 				command "musikcube"
 			}
         }
-
-		// standalone pane for pulsemixer
-		pane split_direction="horizontal" name="Mixer" {
-            pane size="35%" {
-				command "pulsemixer"
-			}
-        }
-    }
 
 	// The last tab is a file browser that opens in the home directory
 	// so that I may freely browse my files and open them using the XDG

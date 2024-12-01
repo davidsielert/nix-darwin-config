@@ -5,8 +5,8 @@
       "<leader>fd".action = ":lua vim.g.formatsave = not vim.g.formatsave<CR>";
       "<leader>zt".action = ":<C-U>let g:default_terminal = v:count1<CR>";
       "<leader>e".action = ":NvimTreeToggle<CR>";
-      "<leader>ld".action = ":lua vim.diagnostic.setqflist({open = true})<CR>";
-      "<leader>lf".action = ":lua vim.lsp.buf.format()<CR>";
+      "<leader>lq".action = ":lua vim.diagnostic.setqflist({open = true})<CR>";
+      # "<leader>lf".action = ":lua vim.lsp.buf.format()<CR>";
       "<leader>li".action = ":lua vim.lsp.buf.implementation()<CR>";
 
       # Diffview

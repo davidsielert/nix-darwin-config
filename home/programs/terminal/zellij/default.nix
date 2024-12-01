@@ -1,5 +1,5 @@
-{osConfig, ...}: let
-  inherit (osConfig.modules.style.colorScheme) slug colors;
+{...}: let
+  #inherit (osConfig.modules.style.colorScheme) slug colors;
 in {
   config = {
     programs.zellij = {
@@ -38,24 +38,24 @@ in {
         # using the color palette and the slug provided by the module
         # this will ensure consistency, generally, with differing
         # colorschemes
-        themes = {
-          "${slug}" = with colors; {
-            bg = "#${base00}";
-            fg = "#${base05}";
-            red = "#${base08}";
-            green = "#${base0A}";
-            blue = "#${base0D}";
-            yellow = "#${base06}";
-            magenta = "#${base0E}";
-            orange = "#${base09}";
-            cyan = "#${base0C}";
-            black = "#${base00}";
-            white = "#${base05}";
-          };
-        };
+        #themes = {
+        #  "${slug}" = with colors; {
+        #    bg = "#${base00}";
+        #    fg = "#${base05}";
+        #    red = "#${base08}";
+        #    green = "#${base0A}";
+        #    blue = "#${base0D}";
+        #    yellow = "#${base06}";
+        #    magenta = "#${base0E}";
+        #    orange = "#${base09}";
+        #    cyan = "#${base0C}";
+        #    black = "#${base00}";
+        #    white = "#${base05}";
+        #  };
+        #};
 
         # set theme to Catppuccin Mocha
-        theme = "${slug}";
+        theme = "dracula";
       };
     };
   };

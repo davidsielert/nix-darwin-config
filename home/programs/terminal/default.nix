@@ -5,5 +5,7 @@
     ./shell
     ./neovim # full-blown IDE
     ./zellij
+    ./btop
+    ./yazi
   ];
 }

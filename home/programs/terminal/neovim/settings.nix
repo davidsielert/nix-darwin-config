@@ -1,4 +1,5 @@
 {
+  inputs,
   pkgs,
   lib,
   ...
@@ -8,7 +9,7 @@
   inherit (lib.strings) hasSuffix fileContents;
   inherit (lib.attrsets) genAttrs;
 
-  inherit (lib.nvim.dag) entryBefore;
+  inherit (inputs.nvf.lib.nvim.dag) entryBefore;
 
   mkRuntimeDir = name: let
     finalPath = ./runtime + /${name};
@@ -64,26 +65,26 @@ in {
           # the lua configuration of my Neovim configuration
           # wrapper. this is recursively read from the lua
           # directory, so we do not need to use require
-          #luaConfigRC = let
-          #  spellFile = path {
-          #    name = "nvf-en.utf-8.add";
-          #    path = ./runtime/spell/en.utf-8.add;
-          #  };
+          luaConfigRC = let
+            spellFile = path {
+              name = "nvf-en.utf-8.add";
+              path = ./runtime/spell/en.utf-8.add;
+            };
 
-          #  # get the name of each lua file in the lua directory, where setting files reside
-          #  # and import tham recursively
-          #  configPaths = filter (hasSuffix ".lua") (map toString (listFilesRecursive ./lua));
+            #  # get the name of each lua file in the lua directory, where setting files reside
+            #  # and import tham recursively
+            configPaths = filter (hasSuffix ".lua") (map toString (listFilesRecursive ./lua));
 
-          #  # generates a key-value pair that looks roughly as follows:
-          #  #  `<filePath> = entryAnywhere ''<contents of filePath>''`
-          #  # which is expected by nvf's modified DAG library
-          #  luaConfig = genAttrs configPaths (file:
-          #    entryBefore ["luaScript"] ''
-          #      ${fileContents file}
-          #    '');
-          #in
-          #  luaConfig // {spell = "vim.o.spellfile = \"${spellFile}\"";};
-        }; #
+            #  # generates a key-value pair that looks roughly as follows:
+            #  #  `<filePath> = entryAnywhere ''<contents of filePath>''`
+            #  # which is expected by nvf's modified DAG library
+            luaConfig = genAttrs configPaths (file:
+              entryBefore ["luaScript"] ''
+                ${fileContents file}
+              '');
+          in
+            luaConfig // {spell = "vim.o.spellfile = \"${spellFile}\"";};
+        };
       };
     };
   };
