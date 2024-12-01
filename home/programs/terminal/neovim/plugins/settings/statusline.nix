@@ -3,7 +3,7 @@
     statusline = {
       lualine = {
         enable = true;
-        theme = "catppuccin";
+        theme = "dracula";
       };
     };
   };

@@ -101,14 +101,14 @@
       statusline = {
         lualine = {
           enable = true;
-          theme = "catppuccin";
+          theme = "dracula";
         };
       };
 
       theme = {
         enable = true;
-        name = "catppuccin";
-        style = "mocha";
+        name = "dracula";
+        style = "dark";
         transparent = false;
       };
 

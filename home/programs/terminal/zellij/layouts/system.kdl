@@ -58,7 +58,7 @@ layout {
 		// toggleterm neovim plugin
         pane split_direction="horizontal" {
             children
-            pane command="zsh" size="25%" name="Shell"
+            pane command="fish" size="25%" name="Shell"
         }
     }
 
@@ -67,7 +67,7 @@ layout {
 	// that we have defined earlier, provides a file-tree
 	// view in my system config directory, and opens flake.nix
 	// with the $EDITOR variable - has focus, is the first tab
-	strider_tab name="Nyx" cwd="~dots" focus=true {
+	strider_tab name="Nyx" cwd="$HOME" focus=true {
         term split_direction="vertical" {
 			// FIXME: edit does not open the file from cwd
 			// instead opens a buffer named flake.nix in cwd
@@ -89,23 +89,31 @@ layout {
 		}
     }
 
-	// the media tab opens musikcube, the TUI music player
-	// and pulsemixer for volume control across different
-	// audio devices - this is split horizontally so that
-	// the mixer covers less space on the screen, at the
-	// bottom 35% of the active tab
-	tab name="Media" split_direction="vertical" {
-		// run musikcube in the Music directory
-		// the CWD doesn't really matter as musikcube
-		// is capable of binding to mpd daemon but
-		// the music directory seemed suitable as
-		// the working directory for the player
-        pane split_direction="horizontal" name="Player" {
-            pane {
-				cwd "$HOME/Music"
-				command "musikcube"
-			}
-        }
+//	// the media tab opens musikcube, the TUI music player
+//	// and pulsemixer for volume control across different
+//	// audio devices - this is split horizontally so that
+//	// the mixer covers less space on the screen, at the
+//	// bottom 35% of the active tab
+//	tab name="Media" split_direction="vertical" {
+//		// run musikcube in the Music directory
+//		// the CWD doesn't really matter as musikcube
+//		// is capable of binding to mpd daemon but
+//		// the music directory seemed suitable as
+//		// the working directory for the player
+//        pane split_direction="horizontal" name="Player" {
+//            pane {
+//				cwd "$HOME/Music"
+//				command "musikcube"
+//			}
+//        }
+//
+//		// standalone pane for pulsemixer
+//		pane split_direction="horizontal" name="Mixer" {
+//            pane size="35%" {
+//				command "pulsemixer"
+//			}
+//        }
+//    }
 
 	// The last tab is a file browser that opens in the home directory
 	// so that I may freely browse my files and open them using the XDG

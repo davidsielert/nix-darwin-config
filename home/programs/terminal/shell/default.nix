@@ -1,6 +1,23 @@
 {pkgs, ...}: {
   programs.fish = {
     enable = true;
+    plugins = [
+      "bass"
+      "kubectl"
+      {
+        name = "tmux";
+        src = pkgs.fetchFromGitHub {
+          owner = "budimanjojo";
+          repo = "tmux.fish";
+          tag = "v2.0.1";
+        };
+      }
+    ];
+    shellInit = ''
+      status is-interactive; and begin
+        set fish_tmux_autostart true
+      end
+    '';
   };
   programs.nushell = {
     enable = true;
@@ -131,7 +148,7 @@
 
     plugins = with pkgs; [
       tmuxPlugins.yank
-      tmuxPlugins.catppuccin
+      tmuxPlugins.dracula
       tmuxPlugins.vim-tmux-navigator
       tmuxPlugins.tmux-fzf
     ];
