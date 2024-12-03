@@ -56,6 +56,7 @@
     python3Packages.virtualenvwrapper
     poetry
     uv
+    rke
   ];
   programs = {
     #nvf = {
