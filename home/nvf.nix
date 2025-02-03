@@ -84,7 +84,7 @@
         enable = true;
         nvimWebDevicons.enable = true;
         scrollBar.enable = true;
-        smoothScroll.enable = false;
+        #smoothScroll.enable = false;
         cellularAutomaton.enable = false;
         cellularAutomaton.mappings.makeItRain = null;
         fidget-nvim.enable = true;
@@ -112,7 +112,7 @@
         transparent = false;
       };
 
-      autopairs.enable = true;
+      #autopairs.enable = true;
 
       autocomplete = {
         enable = true;

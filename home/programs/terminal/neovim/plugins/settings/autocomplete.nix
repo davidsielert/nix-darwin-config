@@ -1,8 +1,8 @@
 {
   programs.nvf.settings.vim = {
-    autocomplete = {
+    autocomplete.nvim-cmp = {
       enable = true;
-      type = "nvim-cmp";
+      # type = "nvim-cmp";
       mappings = {
         # close = "<C-e>";
         confirm = "<C-y>";

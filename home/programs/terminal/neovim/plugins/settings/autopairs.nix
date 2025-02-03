@@ -1,5 +1,5 @@
 {
   programs.nvf.settings.vim = {
-    autopairs.enable = true;
+    # autopairs.enable = true;
   };
 }

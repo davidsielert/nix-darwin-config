@@ -1,10 +1,10 @@
 {
   programs.nvf.settings.vim = {
     visuals = {
-      enable = true;
+      #  enable = true;
       nvimWebDevicons.enable = true;
       scrollBar.enable = true;
-      smoothScroll.enable = false;
+      # smoothScroll.enable = false;
       cellularAutomaton.enable = false;
       highlight-undo.enable = true;
 

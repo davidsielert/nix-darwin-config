@@ -37,7 +37,7 @@
     zoxide
     #sqlFormatter
     #eslint
-    #nodejs_22
+    nodejs_22
     #inputs.Neve.packages.${pkgs.system}.default
 
     # khanelivim.packages.${system}.default

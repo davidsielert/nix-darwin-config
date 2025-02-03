@@ -72,6 +72,7 @@
     # `brew install --cask`
     # TODO Feel free to add your favorite apps here.
     casks = [
+      "ghostty"
       # "firefox"
       # "google-chrome"
       # "visual-studio-code"
