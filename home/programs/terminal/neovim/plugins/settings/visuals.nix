@@ -2,19 +2,19 @@
   programs.nvf.settings.vim = {
     visuals = {
       #  enable = true;
-      nvimWebDevicons.enable = true;
-      scrollBar.enable = true;
+      nvim-web-devicons.enable = true;
+      nvim-scrollbar.enable = true;
       # smoothScroll.enable = false;
-      cellularAutomaton.enable = false;
+      cellular-automaton.enable = false;
       highlight-undo.enable = true;
 
-      indentBlankline = {
+      indent-blankline = {
         enable = true;
       };
 
-      cursorline = {
+      nvim-cursorline = {
         enable = true;
-        lineTimeout = 0;
+        setupOpts.line_timeout = 0;
       };
 
       fidget-nvim = {

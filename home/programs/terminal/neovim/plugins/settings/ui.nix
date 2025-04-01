@@ -7,7 +7,7 @@
       illuminate.enable = true;
 
       breadcrumbs = {
-        enable = true;
+        enable = false;
         source = "nvim-navic";
         navbuddy.enable = false;
       };

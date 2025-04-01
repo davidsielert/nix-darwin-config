@@ -41,7 +41,7 @@
 
       lua = {
         enable = true;
-        lsp.neodev.enable = true;
+        # lsp.neodev.enable = true;
       };
 
       rust = {

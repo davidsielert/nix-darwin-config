@@ -31,7 +31,7 @@
     zstd
     caddy
     gnupg
-
+    mprocs
     # productivity
     glow # markdown previewer in terminal
     zoxide

@@ -48,7 +48,7 @@ in {
           };
 
           enableLuaLoader = true;
-          enableEditorconfig = true;
+          globals.editorconfig = true;
 
           debugMode = {
             enable = false;

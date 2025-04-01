@@ -67,6 +67,7 @@
       # "awscli"
       "helm"
       "k9s"
+      "kubectx"
     ];
 
     # `brew install --cask`
