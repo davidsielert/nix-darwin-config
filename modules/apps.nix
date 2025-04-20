@@ -73,22 +73,14 @@
 
     # `brew install --cask`
     # TODO Feel free to add your favorite apps here.
+
     casks = [
-      "ghostty"
+      {
+        name = "ghostty";
+        greedy = true;
+      }
       # "firefox"
       # "google-chrome"
-      # "visual-studio-code"
-
-      # IM & audio & remote desktop & meeting
-      # "telegram"
-      # "discord"
-      #"kitty"
-      "font-dejavu-sans-mono-nerd-font"
-      "anki"
-      # "iina" # video player
-      # "raycast" # (HotKey: alt/option + space)search, caculate and run scripts(with many plugins)
-      "stats" # beautiful system monitor
-      # "eudic" # 欧路词典
 
       # Development
       "insomnia" # REST client
@@ -96,3 +88,4 @@
     ];
   };
 }
+
