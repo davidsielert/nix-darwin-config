@@ -72,6 +72,11 @@
       status is-interactive; and begin
         set fish_tmux_autostart true
       end
+        # ~/.config/fish/config.fish
+        set -gx HOMEBREW_PREFIX /opt/homebrew
+        set -gx HOMEBREW_CELLAR /opt/homebrew/Cellar
+        set -gx HOMEBREW_REPOSITORY /opt/homebrew
+        set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
     '';
     functions = {
       auto_activate_venv = {

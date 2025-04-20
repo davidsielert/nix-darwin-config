@@ -67,6 +67,7 @@
       # "awscli"
       "helm"
       "k9s"
+      "kubernetes-cli"
       "kubectx"
     ];
 
