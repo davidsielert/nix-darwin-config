@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   programs.nvf.settings.vim = {
     utility = {
-      ccc.enable = true;
+      ccc.enable = false;
       icon-picker.enable = true;
       diffview-nvim.enable = true;
 
