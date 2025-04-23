@@ -48,7 +48,15 @@
         enable = true;
         crates.enable = true;
       };
-
+      css = {
+        format.type = "biome";
+      };
+      svelte = {
+        format.type = "biome";
+      };
+      ts = {
+        format.type = "biome";
+      };
       clang = {
         enable = true;
         lsp = {
