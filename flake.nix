@@ -12,8 +12,13 @@
   nixConfig = {
     substituters = [
       # Query the mirror of USTC first, and then the official cache.
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://cache.nixos.org"
+      "https://cache.nixos.org?priority=10"
+      #"https://mirrors.ustc.edu.cn/nix-channels/store"
+      #"https://cache.nixos.org"
+      "https://nyx.chaotic.cx"
+      "https://hyprland.cachix.org"
+      "https://nix-community.cachix.org"
+      "https://yazi.cachix.org"
     ];
   };
 
