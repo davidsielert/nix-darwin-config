@@ -1,9 +1,11 @@
-
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  myOverlays,
+  ...
+}: {
   # enable flakes globally
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -28,4 +30,5 @@
   nix.settings = {
     auto-optimise-store = false;
   };
+  nixpkgs.overlays = [myOverlays];
 }

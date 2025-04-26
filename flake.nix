@@ -61,8 +61,14 @@
         system = "aarch64-darwin"; # Use "aarch64-darwin" for Apple Silicon, "x86_64-darwin" for Intel Macs
         hostname = "mbp14";
         myOverlays = self: super: {
-          # Adding eslint to the package set
           eslint = super.nodePackages.eslint or null;
+          # Disable checks for nodejs and nodejs-slim
+          nodejs = super.nodejs.overrideAttrs (oldAttrs: {
+            doCheck = false;
+          });
+          nodejs-slim = super.nodejs-slim.overrideAttrs (oldAttrs: {
+            doCheck = false;
+          });
         };
         # Package set for the selected system
         pkgs = import inputs.nixpkgs {
@@ -81,6 +87,7 @@
               hostname
               inputs
               nvf
+              myOverlays
               ;
           };
       in {
