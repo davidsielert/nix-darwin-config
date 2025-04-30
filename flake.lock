@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "biome-pinned": {
+      "locked": {
+        "lastModified": 1746012182,
+        "narHash": "sha256-SrFwe4dmOa4Xk7s9xNzDL1O6P6HEO7XbrBPs7O3ksD4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fb80ed6efd437ac2ef2f98681d8a06c08fc5966e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fb80ed6efd437ac2ef2f98681d8a06c08fc5966e",
+        "type": "github"
+      }
+    },
     "cl-nix-lite": {
       "locked": {
         "lastModified": 1728174978,
@@ -509,6 +525,7 @@
     },
     "root": {
       "inputs": {
+        "biome-pinned": "biome-pinned",
         "darwin": "darwin",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",

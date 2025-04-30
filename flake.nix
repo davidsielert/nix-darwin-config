@@ -43,6 +43,11 @@
     nvf.url = "github:notashelf/nvf";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
+    biome-pinned = {
+      # use the exact commit
+      url = "github:NixOS/nixpkgs/fb80ed6efd437ac2ef2f98681d8a06c08fc5966e";
+      };
+
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -63,6 +68,9 @@
           eslint = super.nodePackages.eslint or null;
           nodejs = super.nodejs.overrideAttrs (old: {doCheck = false;});
           nodejs-slim = super.nodejs-slim.overrideAttrs (old: {doCheck = false;});
+          biomeFromCommit = self: super: {
+            biome = inputs.biome-pinned.legacyPackages.${super.system}.biome;
+          };
         };
 
         # Include both your overlay and the gen-luarc default overlay
@@ -90,6 +98,7 @@
         darwinConfigurations."${hostname}" = inputs.darwin.lib.darwinSystem {
           inherit system specialArgs;
           # ← tell nix-darwin to use _this_ pkgs (with your kickstart overlay)
+          pkgs = pkgs;
           modules = [
             ./modules/nix-core.nix
             ./modules/system.nix

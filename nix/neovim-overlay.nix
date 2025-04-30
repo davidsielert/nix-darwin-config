@@ -83,11 +83,22 @@ with final.pkgs.lib; let
     # (mkNvimPlugin inputs.wf-nvim "wf.nvim") # (example) keymap hints | https://github.com/Cassin01/wf.nvim
     # ^ bleeding-edge plugins from flake inputs
     which-key-nvim
+    onedarkpro-nvim
+    catppuccin-nvim
+    conform-nvim
+    nvim-tree-lua
+    lspsaga-nvim
   ];
 
   extraPackages = with pkgs; [
     # language servers, etc.
     lua-language-server
+    tailwindcss-language-server
+    yaml-language-server
+    typescript-language-server
+    svelte-language-server
+   python312Packages.jedi-language-server
+   biome
     nil # nix LSP
   ];
 in {
@@ -112,7 +123,6 @@ in {
   nvim-luarc-json = final.mk-luarc-json {
     plugins = all-plugins;
   };
-
   # You can add as many derivations as you like.
   # Use `ignoreConfigRegexes` to filter out config
   # files you would not like to include.
