@@ -10,7 +10,7 @@
 
   # the nixConfig here only affects the flake itself, not the system configuration!
   nixConfig = {
-    substituters = [
+    extra-substituters = [
       # Query the mirror of USTC first, and then the official cache.
       "https://cache.nixos.org?priority=10"
       #"https://mirrors.ustc.edu.cn/nix-channels/store"
@@ -20,6 +20,7 @@
       "https://nix-community.cachix.org"
       "https://yazi.cachix.org"
     ];
+    extra-trusted-public-keys = ["nix-community.cachix.org-1:iH5YI1D3vds8ILsPzQXTrCG/tvY1pG+sGbGjfm6u5gI="];
   };
 
   # This is the standard format for flake.nix. `inputs` are the dependencies of the flake,
