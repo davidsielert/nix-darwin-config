@@ -43,9 +43,6 @@
     nvf.url = "github:notashelf/nvf";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
-    kickstart-nix = {
-      url = "github:davidsielert/kickstart-nix.nvim";
-    };
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -79,22 +76,20 @@
           inherit system;
           overlays = overlays;
         };
-        nixpkgs.overlays = [
-          inputs.gen-luarc.overlays.default
-          inputs.kickstart-nix.overlays.default
-        ];
 
-        inherit (inputs) nvf;
+        #inherit (inputs) nvf;
 
         specialArgs =
           inputs
           // {
-            inherit username useremail hostname inputs nvf myOverlays;
+            inherit username useremail hostname inputs myOverlays;
           };
       in {
         darwinConfigurations."${hostname}" = inputs.darwin.lib.darwinSystem {
           inherit system specialArgs;
+          # ← tell nix-darwin to use _this_ pkgs (with your kickstart overlay)
           modules = [
+            ./modules/overlays.nix
             ./modules/nix-core.nix
             ./modules/system.nix
             ./modules/apps.nix
