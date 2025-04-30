@@ -3,7 +3,7 @@
     #./helix # sucks
     ./lazygit
     ./shell
-    ./neovim # full-blown IDE
+    ./nvf # full-blown IDE
     ./zellij
     ./btop
     ./yazi
