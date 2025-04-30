@@ -86,6 +86,7 @@
             inherit username useremail hostname inputs myOverlays;
           };
       in {
+        overlays = [neovim-overlay];
         darwinConfigurations."${hostname}" = inputs.darwin.lib.darwinSystem {
           inherit system specialArgs;
           # ← tell nix-darwin to use _this_ pkgs (with your kickstart overlay)
