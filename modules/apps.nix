@@ -19,6 +19,7 @@
     just # use Justfile to simplify nix-darwin's commands
     llvmPackages.lldb
     zoxide
+    nvim-pkg
   ];
   environment.variables.EDITOR = "nvim";
 

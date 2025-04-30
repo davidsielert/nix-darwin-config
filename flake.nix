@@ -43,6 +43,9 @@
     nvf.url = "github:notashelf/nvf";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
+    kickstart-nix = {
+      url = "github:davidsielert/kickstart-nix.nvim";
+    };
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -62,13 +65,13 @@
           eslint = super.nodePackages.eslint or null;
           nodejs = super.nodejs.overrideAttrs (old: {doCheck = false;});
           nodejs-slim = super.nodejs-slim.overrideAttrs (old: {doCheck = false;});
-          neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
         };
 
         # Include both your overlay and the gen-luarc default overlay
         overlays = [
           myOverlays
           inputs.gen-luarc.overlays.default
+          inputs.kickstart-nix.overlays.default
         ];
 
         # Load pkgs with those overlays
@@ -76,6 +79,10 @@
           inherit system;
           overlays = overlays;
         };
+        nixpkgs.overlays = [
+          inputs.gen-luarc.overlays.default
+          inputs.kickstart-nix.overlays.default
+        ];
 
         inherit (inputs) nvf;
 
@@ -110,4 +117,3 @@
       };
     };
 }
-
