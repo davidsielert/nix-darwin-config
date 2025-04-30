@@ -68,7 +68,6 @@
       "helm"
       "k9s"
       "kubernetes-cli"
-      "biome" # JavaScript and TypeScript linter
       "kubectx"
     ];
 
