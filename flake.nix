@@ -40,7 +40,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     mac-app-util.url = "github:hraban/mac-app-util";
     systems.url = "github:nix-systems/default-darwin";
-    nvf.url = "github:notashelf/nvf";
+#:    nvf.url = "github:notashelf/nvf";
     flake-utils.url = "github:numtide/flake-utils";
     gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
     biome-pinned = {
