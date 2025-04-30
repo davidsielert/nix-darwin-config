@@ -48,6 +48,8 @@
     systems.url = "github:nix-systems/default-darwin";
 
     nvf.url = "github:notashelf/nvf";
+    flake-utils.url = "github:numtide/flake-utils";
+    gen-luarc.url = "github:mrcjkb/nix-gen-luarc-json";
   };
   outputs = inputs @ {flake-parts, ...}:
     flake-parts.lib.mkFlake {inherit inputs;} {
@@ -70,6 +72,8 @@
           nodejs-slim = super.nodejs-slim.overrideAttrs (oldAttrs: {
             doCheck = false;
           });
+          neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
+        inputs.gen-luarc.overlays.default;
         };
         # Package set for the selected system
         pkgs = import inputs.nixpkgs {
@@ -77,7 +81,7 @@
           overlays = [myOverlays];
         };
         inherit (inputs) nvf;
-        #nvf = inputs.nvf;
+        # nvf = inputs.nvf;
         # Special arguments passed to modules
         specialArgs =
           inputs
