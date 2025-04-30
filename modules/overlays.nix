@@ -1,4 +1,9 @@
 {
+  inputs,
+  self,
+  nixpkgs,
+  ...
+}: {
   config,
   pkgs,
   lib,

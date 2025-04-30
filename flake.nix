@@ -57,6 +57,7 @@
         system = "aarch64-darwin";
         hostname = "mbp14";
 
+        neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
         # Your custom overlay
         myOverlays = self: super: {
           eslint = super.nodePackages.eslint or null;
@@ -67,6 +68,7 @@
         # Include both your overlay and the gen-luarc default overlay
         overlays = [
           myOverlays
+          neovim-overlay
           inputs.gen-luarc.overlays.default
         ];
 
@@ -88,7 +90,6 @@
           inherit system specialArgs;
           # ← tell nix-darwin to use _this_ pkgs (with your kickstart overlay)
           modules = [
-            ./modules/overlays.nix
             ./modules/nix-core.nix
             ./modules/system.nix
             ./modules/apps.nix
