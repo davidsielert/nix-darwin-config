@@ -68,7 +68,6 @@
         overlays = [
           myOverlays
           inputs.gen-luarc.overlays.default
-          inputs.kickstart-nix.overlays.default
         ];
 
         # Load pkgs with those overlays
