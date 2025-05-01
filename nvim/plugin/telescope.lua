@@ -9,7 +9,7 @@ local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 
 local layout_config = {
-  vertical = {
+  horizontal = {
     width = function(_, max_columns)
       return math.floor(max_columns * 0.99)
     end,
@@ -66,7 +66,7 @@ telescope.setup {
     path_display = {
       'truncate',
     },
-    layout_strategy = 'vertical',
+    layout_strategy = 'horizontal',
     layout_config = layout_config,
     mappings = {
       i = {
