@@ -1,1 +1,1 @@
-vim.api.nvim_echo({ { 'Hello, Neovim!', 'None' } }, false, {})
+-- vim.api.nvim_echo({ { 'Hello, Neovim!', 'None' } }, false, {})

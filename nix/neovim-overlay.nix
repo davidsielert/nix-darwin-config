@@ -96,7 +96,7 @@ with final.pkgs.lib; let
     nvim-dap-go
     indent-blankline-nvim
     fidget-nvim
-    neodev-nvim
+    lazydev-nvim
     luasnip
     cmp_luasnip
     cmp-nvim-lsp
@@ -113,8 +113,10 @@ with final.pkgs.lib; let
     typescript-language-server
     svelte-language-server
    python312Packages.jedi-language-server
+   python312Packages.mypy
    biome
     nil # nix LSP
+    vscode-langservers-extracted
   ];
 in {
   # This is the neovim derivation
