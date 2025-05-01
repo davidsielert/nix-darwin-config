@@ -103,6 +103,8 @@ with final.pkgs.lib; let
     cmp-path
     copilot-cmp
     tailwindcssColorizerCmp
+    plenary-nvim
+    telescope-ui-select-nvim
   ];
 
   extraPackages = with pkgs; [
