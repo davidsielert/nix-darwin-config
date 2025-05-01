@@ -68,9 +68,7 @@
           eslint = super.nodePackages.eslint or null;
           nodejs = super.nodejs.overrideAttrs (old: {doCheck = false;});
           nodejs-slim = super.nodejs-slim.overrideAttrs (old: {doCheck = false;});
-          biomeFromCommit = self: super: {
-            biome = inputs.biome-pinned.legacyPackages.${super.system}.biome;
-          };
+          biome = inputs.biome-pinned.legacyPackages.${self.system}.biome;
         };
 
         # Include both your overlay and the gen-luarc default overlay

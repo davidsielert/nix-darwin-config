@@ -88,6 +88,21 @@ with final.pkgs.lib; let
     conform-nvim
     nvim-tree-lua
     lspsaga-nvim
+    nvim-lspconfig
+    copilot-lua
+    copilot-cmp
+    nvim-dap
+    nvim-dap-ui
+    nvim-dap-go
+    indent-blankline-nvim
+    fidget-nvim
+    neodev-nvim
+    luasnip
+    cmp_luasnip
+    cmp-nvim-lsp
+    cmp-path
+    copilot-cmp
+
   ];
 
   extraPackages = with pkgs; [

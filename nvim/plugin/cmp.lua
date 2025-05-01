@@ -1,0 +1,53 @@
+--------------------------------------------------------------------------------
+--  nvim-cmp + LuaSnip + Copilot-cmp  (no Lazy)
+--  Required plugins (install with your manager of choice):
+--    • hrsh7th/nvim-cmp
+--    • L3MON4D3/LuaSnip            (run `make install_jsregexp` if you want regex snippets)
+--    • saadparwaiz1/cmp_luasnip
+--    • hrsh7th/cmp-nvim-lsp
+--    • hrsh7th/cmp-path
+--    • zbirenbaum/copilot-cmp      (optional, GitHub Copilot source)
+--------------------------------------------------------------------------------
+local cmp     = require('cmp')
+local luasnip = require('luasnip')
+
+-------------------------------------------------------------------------------
+-- Snippet engine
+-------------------------------------------------------------------------------
+luasnip.config.setup({})          -- default LuaSnip settings
+require('copilot_cmp').setup({})  -- copilot-cmp glue
+
+-------------------------------------------------------------------------------
+-- nvim-cmp configuration
+-------------------------------------------------------------------------------
+cmp.setup({
+  snippet = {
+    expand = function(args) luasnip.lsp_expand(args.body) end,
+  },
+
+  completion = { completeopt = 'menu,menuone,noinsert' },
+
+  mapping = cmp.mapping.preset.insert({
+    ['<C-n>']     = cmp.mapping.select_next_item(),        -- next item
+    ['<C-p>']     = cmp.mapping.select_prev_item(),        -- previous item
+    ['<C-y>']     = cmp.mapping.confirm({ select = true }),-- accept & auto-import
+    ['<C-Space>'] = cmp.mapping.complete({}),              -- manual trigger
+    ['<C-l>']     = cmp.mapping(function()
+                      if luasnip.expand_or_locally_jumpable() then
+                        luasnip.expand_or_jump()
+                      end
+                    end, { 'i', 's' }),
+    ['<C-h>']     = cmp.mapping(function()
+                      if luasnip.locally_jumpable(-1) then
+                        luasnip.jump(-1)
+                      end
+                    end, { 'i', 's' }),
+  }),
+
+  sources = {
+    { name = 'copilot',  group_index = 2 },  -- Copilot suggestions
+    { name = 'nvim_lsp' },                   -- LSP completions
+    { name = 'luasnip' },                    -- Snippets
+    { name = 'path'   },                     -- File paths
+  },
+})
