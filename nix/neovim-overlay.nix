@@ -2,7 +2,7 @@
 {inputs}: final: prev:
 with final.pkgs.lib; let
   pkgs = final;
-
+  build = prev.vimUtils.buildVimPluginFrom2Nix;
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
     pkgs.vimUtils.buildVimPlugin {
@@ -102,7 +102,7 @@ with final.pkgs.lib; let
     cmp-nvim-lsp
     cmp-path
     copilot-cmp
-
+    tailwindcssColorizerCmp
   ];
 
   extraPackages = with pkgs; [
@@ -156,4 +156,16 @@ in {
   #   ];
   #   inherit extraPackages;
   # };
+  vimPlugins = prev.vimPlugins // {
+    tailwindcssColorizerCmp = build {
+      pname   = "tailwindcss-colorizer-cmp";
+      version = "2024-12-23";
+      src = prev.fetchFromGitHub {
+        owner  = "roobert";
+        repo   = "tailwindcss-colorizer-cmp.nvim";
+        rev    = "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86";
+        sha256 = "sha256-PIkfJzLt001TojAnE/rdRhgVEwSvCvUJm/vNPLSWjpY=";   # fill in the hash
+      };
+    };
+  };
 }

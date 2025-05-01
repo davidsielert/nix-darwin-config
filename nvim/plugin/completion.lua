@@ -2,8 +2,11 @@ if vim.g.did_load_completion_plugin then
   return
 end
 vim.g.did_load_completion_plugin = true
-local cmp = require('cmp')
-
+local cmp                        = require('cmp')
+local twcolor                    = require('tailwindcss-colorizer-cmp')
+twcolor.setup({
+  color_square_width = 2,
+})
 require('copilot_cmp').setup({}) -- copilot-cmp glue
 local lspkind       = require('lspkind')
 local lspconfig     = require('lspconfig')
@@ -20,6 +23,21 @@ lspconfig.tailwindcss.setup({
     'package.json',
     '.git'
   ),
+})
+local lspkind_format = lspkind.cmp_format({
+  mode = 'symbol_text',
+  with_text = true,
+  maxwidth = 50,
+  ellipsis_char = '...',
+  menu = {
+    buffer                   = '[BUF]',
+    nvim_lsp                 = '[LSP]',
+    nvim_lsp_signature_help  = '[LSP]',
+    nvim_lsp_document_symbol = '[LSP]',
+    nvim_lua                 = '[API]',
+    path                     = '[PATH]',
+    luasnip                  = '[SNIP]',
+  },
 })
 local function has_words_before()
   local unpack_ = unpack or table.unpack
@@ -42,22 +60,11 @@ cmp.setup {
     -- autocomplete = false,
   },
   formatting = {
-    format = lspkind.cmp_format {
-      mode = 'symbol_text',
-      with_text = true,
-      maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
-      menu = {
-        buffer = '[BUF]',
-        nvim_lsp = '[LSP]',
-        nvim_lsp_signature_help = '[LSP]',
-        nvim_lsp_document_symbol = '[LSP]',
-        nvim_lua = '[API]',
-        path = '[PATH]',
-        luasnip = '[SNIP]',
-      },
-    },
+    format = function(entry, item)
+      item = lspkind_format(entry, item)    -- ① add icons / text
+      item = twcolor.formatter(entry, item) -- ② draw colour squares
+      return item
+    end,
   },
   snippet = {
     expand = function(args)
