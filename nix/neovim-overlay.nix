@@ -86,7 +86,8 @@ with final.pkgs.lib; let
     onedarkpro-nvim
     catppuccin-nvim
     conform-nvim
-    nvim-tree-lua
+    oil-nvim
+    # nvim-tree-lua
     lspsaga-nvim
     nvim-lspconfig
     copilot-lua
