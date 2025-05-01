@@ -69,6 +69,8 @@
           nodejs = super.nodejs.overrideAttrs (old: {doCheck = false;});
           nodejs-slim = super.nodejs-slim.overrideAttrs (old: {doCheck = false;});
           biome = inputs.biome-pinned.legacyPackages.${self.system}.biome;
+          tailwindcss-language-server =
+    inputs.nixpkgs-unstable.legacyPackages.${self.system}.tailwindcss-language-server;
         };
 
         # Include both your overlay and the gen-luarc default overlay

@@ -117,6 +117,8 @@ with final.pkgs.lib; let
    biome
     nil # nix LSP
     vscode-langservers-extracted
+    black
+    isort
   ];
 in {
   # This is the neovim derivation

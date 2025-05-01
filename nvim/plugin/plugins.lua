@@ -7,5 +7,5 @@ vim.g.did_load_plugins_plugin = true
 -- even with default configs
 
 require('nvim-surround').setup()
-require('copilot_cmp').setup {}
-require('copilot').setup {} 
+-- require('copilot_cmp').setup {}
+require('copilot').setup {}

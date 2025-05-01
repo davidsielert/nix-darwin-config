@@ -24,7 +24,7 @@ conform.setup {
 
     python     = { 'isort', 'black' },
 
-    javascript = { 'biome' },   -- stop_after_first = true  (default behaviour)
+    javascript = { 'biome' }, -- stop_after_first = true  (default behaviour)
 
     typescript = { 'biome' },
     html       = { 'biome' },
@@ -36,13 +36,12 @@ conform.setup {
     biome = {
       command = 'npx',
       -- `ctx` gives you { buf, file, range = {start,end}|nil, lsp_fallback, … }
-      args = function(ctx)
+      args = function(self, ctx)
         return {
           'biome',
           'format',
           '--stdin-file-path',
-          ctx.file,
-          '--stdin',
+          ctx.filename,
         }
       end,
       stdin = true,

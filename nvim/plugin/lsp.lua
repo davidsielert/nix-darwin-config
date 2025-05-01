@@ -55,11 +55,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 -- CAPABILITIES (adds nvim-cmp completion capability) -------------------------
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local ok_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
-if ok_cmp then
-  capabilities = vim.tbl_deep_extend('force', capabilities, cmp_lsp.default_capabilities())
-end
 
 -- SERVER LIST & PER-SERVER SETTINGS ------------------------------------------
 local servers = {
@@ -80,22 +75,22 @@ local servers = {
   svelte           = {},
   yamlls           = {},
   cssls            = {},
-
-  lua_ls           = {
-    settings = {
-      Lua = {
-        runtime = { version = 'LuaJIT' },
-        workspace = {
-          checkThirdParty = false,
-          library = {
-            '${3rd}/luv/library',
-            unpack(vim.api.nvim_get_runtime_file('', true)),
-          },
-        },
-        completion = { callSnippet = 'Replace' },
-      },
-    },
-  },
+  -- not needed? uses lazydev  
+  -- lua_ls           = {
+  --   settings = {
+  --     Lua = {
+  --       runtime = { version = 'LuaJIT' },
+  --       workspace = {
+  --         checkThirdParty = false,
+  --         library = {
+  --           '${3rd}/luv/library',
+  --           unpack(vim.api.nvim_get_runtime_file('', true)),
+  --         },
+  --       },
+  --       completion = { callSnippet = 'Replace' },
+  --     },
+  --   },
+  -- },
   tailwindcss      = {}
 
 }

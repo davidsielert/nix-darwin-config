@@ -2,13 +2,25 @@ if vim.g.did_load_completion_plugin then
   return
 end
 vim.g.did_load_completion_plugin = true
-
 local cmp = require('cmp')
-local lspkind = require('lspkind')
-local luasnip = require('luasnip')
 
+require('copilot_cmp').setup({}) -- copilot-cmp glue
+local lspkind       = require('lspkind')
+local lspconfig     = require('lspconfig')
+local luasnip       = require('luasnip')
+local capabilities  = require('cmp_nvim_lsp').default_capabilities()
 vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
-
+lspconfig.tailwindcss.setup({
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern(
+    'tailwind.config.js',
+    'tailwind.config.cjs',
+    'tailwind.config.mjs',
+    'postcss.config.js',
+    'package.json',
+    '.git'
+  ),
+})
 local function has_words_before()
   local unpack_ = unpack or table.unpack
   local line, col = unpack_(vim.api.nvim_win_get_cursor(0))
@@ -33,7 +45,7 @@ cmp.setup {
     format = lspkind.cmp_format {
       mode = 'symbol_text',
       with_text = true,
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 
       menu = {
@@ -70,8 +82,8 @@ cmp.setup {
     ['<C-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      -- expand_or_jumpable(): Jump outside the snippet region
-      -- expand_or_locally_jumpable(): Only jump inside the snippet region
+        -- expand_or_jumpable(): Jump outside the snippet region
+        -- expand_or_locally_jumpable(): Only jump inside the snippet region
       elseif luasnip.expand_or_locally_jumpable() then
         luasnip.expand_or_jump()
       elseif has_words_before() then
@@ -103,10 +115,13 @@ cmp.setup {
   },
   sources = cmp.config.sources {
     -- The insertion order influences the priority of the sources
-    { name = 'nvim_lsp', keyword_length = 3 },
+    { name = 'copilot',                 group_index = 2 }, -- Copilot suggestions
+    { name = 'nvim_lsp',                keyword_length = 3 },
     { name = 'nvim_lsp_signature_help', keyword_length = 3 },
     { name = 'buffer' },
     { name = 'path' },
+    { name = 'luasnip' }, -- Snippets
+
   },
   enabled = function()
     return vim.bo[0].buftype ~= 'prompt'
@@ -161,3 +176,13 @@ end, { noremap = false, desc = '[cmp] cmdline history' })
 vim.keymap.set({ 'c' }, '<C-c>', function()
   complete_with_source('cmdline')
 end, { noremap = false, desc = '[cmp] cmdline' })
+
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+-- safe require: pcall returns (true, module) on success
+local ok_cmp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+if ok_cmp and cmp_lsp then
+  -- default_capabilities() already merges for you
+  capabilities = cmp_lsp.default_capabilities(capabilities)
+end
