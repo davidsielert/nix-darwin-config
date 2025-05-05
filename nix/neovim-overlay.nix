@@ -2,7 +2,7 @@
 {inputs}: final: prev:
 with final.pkgs.lib; let
   pkgs = final;
-  build = prev.vimUtils.buildVimPluginFrom2Nix;
+  build = prev.vimUtils.buildVimPlugin;
   # Use this to create a plugin from a flake input
   mkNvimPlugin = src: pname:
     pkgs.vimUtils.buildVimPlugin {
@@ -106,6 +106,7 @@ with final.pkgs.lib; let
     tailwindcssColorizerCmp
     plenary-nvim
     telescope-ui-select-nvim
+    cmp-tabnine
   ];
 
   extraPackages = with pkgs; [
@@ -170,5 +171,18 @@ in {
         sha256 = "sha256-PIkfJzLt001TojAnE/rdRhgVEwSvCvUJm/vNPLSWjpY=";   # fill in the hash
       };
     };
+
+    vimPlugins = pkgs.vimPlugins // {
+    gemini-nvim = build {
+      pname = "gemini-nvim";
+      version = "2025-05-02"; # Use the current date or the latest commit date
+      src = pkgs.fetchFromGitHub {
+        owner = "kiddos";
+        repo = "gemini.nvim";
+        rev = "master"; # Replace with a specific commit hash for stability
+        sha256 = ""; # Replace with the actual hash
+      };
+    };
+  };
   };
 }
