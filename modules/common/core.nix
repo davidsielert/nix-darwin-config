@@ -20,18 +20,18 @@
         "pipe-operators"
       ];
 
-      auto-optimise-store = lib.mkDefault true;
 
       trusted-users = [ "root" "davidsielert" ];  # add others if needed
       warn-dirty    = false;                      # avoid noisy git msg
     };
 
-    gc = {
-      automatic = lib.mkDefault true;
-      # NixOS uses cron-like syntax; Darwin uses launchd-style
-      # so `dates` works on both.
-      dates   = "03:15";
-      options = "--delete-older-than 7d";
+    optimise = {
+      # The Nix store is shared between all users, so we need to
+      # ensure that the garbage collector doesn't delete our stuff.
+      # This is done by running the GC automatically at a set interval.
+      # Note: this is not needed on NixOS, as it runs the GC automatically.
+      # See https://nixos.wiki/wiki/Automatic_GC
+      automatic = true;
     };
   };
 

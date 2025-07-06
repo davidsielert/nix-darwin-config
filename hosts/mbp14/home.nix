@@ -1,7 +1,8 @@
 {
+  inputs,
   username,
   ...
-} @ inputs: {
+}: {
   # import sub modules
   imports = [
     ./core.nix

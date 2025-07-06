@@ -10,7 +10,7 @@
   # 1. Host identification & networking
   ########################################################################
   networking = {
-    computerName = "davids-mbp14";   # Finder / AirDrop name
+    computerName = "mbp14";   # Finder / AirDrop name
     hostName     = "mbp14";          # BSD hostname
   };
 
@@ -36,9 +36,6 @@
   # 4. System packages just for this Mac
   ########################################################################
   environment.systemPackages = with pkgs; [
-    colima           # container runtime backed by Lima/VM
-    podman           # alt container CLI
-    hammerspoon
   ];
 
   ########################################################################
