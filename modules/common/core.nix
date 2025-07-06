@@ -15,7 +15,8 @@
     settings = {
       # turn on all the goodies that work everywhere
       experimental-features = [
-        "nix-command" "flakes" "repl-flake"
+        "nix-command" "flakes" 
+        # "repl-flake"
         "ca-derivations" "auto-allocate-uids"
         "pipe-operators"
       ];
