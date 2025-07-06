@@ -15,7 +15,7 @@ let
   mkHM = name: cfg:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs   = pkgsFor cfg.system;
-      modules = [ ./../../home ./../../hosts/${name}/home.nix ];
+      modules = [ ./../home ./../hosts/${name}/home.nix ];
       extraSpecialArgs = { inherit inputs name; };
     };
 
@@ -24,9 +24,9 @@ let
       system = cfg.system;
       specialArgs = { inherit inputs name; };
       modules = [
-        ../../modules/common/core.nix
-        ../../modules/darwin/system.nix
-        ../../hosts/${name}/darwin.nix
+        ../modules/common/core.nix
+        ../modules/darwin/system.nix
+        ../hosts/${name}/darwin.nix
         inputs.home-manager.darwinModules.home-manager
         ({ config, ... }: {
           home-manager.useGlobalPkgs   = true;
@@ -41,9 +41,9 @@ let
       system = cfg.system;
       specialArgs = { inherit inputs name; };
       modules = [
-        ../../modules/common/core.nix
-        ../../modules/nixos     # optional Linux-only tweaks
-        ../../hosts/${name}/nixos.nix
+        ../modules/common/core.nix
+        ../modules/nixos     # optional Linux-only tweaks
+        ../hosts/${name}/nixos.nix
         inputs.home-manager.nixosModules.home-manager
         ({ ... }: {
           home-manager.useGlobalPkgs   = true;
