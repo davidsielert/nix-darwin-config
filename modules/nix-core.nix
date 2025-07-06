@@ -5,7 +5,7 @@
   ...
 }: {
   # enable flakes globally
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes" "pipe-operators"];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

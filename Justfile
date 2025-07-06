@@ -21,7 +21,7 @@ darwin-set-proxy:
 [group('desktop')]
 darwin:
   NIXPKGS_ALLOW_UNFREE=1 nix build .#darwinConfigurations.{{hostname}}.system \
-    --extra-experimental-features 'nix-command flakes' --impure
+    --extra-experimental-features 'nix-command flakes pipe-operators' --impure
 
   ./result/sw/bin/darwin-rebuild switch --flake .#{{hostname}}
 

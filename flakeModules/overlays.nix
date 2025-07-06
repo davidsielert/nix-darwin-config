@@ -14,35 +14,33 @@
 { inputs, lib, ... }:
 
 let
-  # Directory that holds *.nix overlay files
   overlayDir = ../nix/overlays;
 
-  # Helper: turn every file in overlayDir into an attr-set entry
-  overlayAttrs =
-    builtins.listToAttrs
-      (map
-        (file:
-          let
-            name = builtins.removeSuffix ".nix" (lib.strings.baseNameOf file);
-          in
-          {
-            inherit name;
-            value = import (overlayDir + "/${file}") { inherit inputs; };
-          })
-        (lib.filterAttrs
-          (_: type: type == "regular")
-          (builtins.readDir overlayDir)
-          |> builtins.attrNames));
+  # ── overlay files in nix/overlays/ ────────────────────────────────────
+  fileNames =
+    builtins.attrNames
+      (lib.filterAttrs (_: t: t == "regular") (builtins.readDir overlayDir));
 
-  # The list form many nixpkgs imports expect
-  overlayList = lib.attrValues overlayAttrs;
+  fileOverlays =
+    builtins.listToAttrs (map
+      (file: {
+        name  = builtins.removeSuffix ".nix" (lib.strings.baseNameOf file);
+        value = import (overlayDir + "/${file}") { inherit inputs; };
+      })
+      fileNames);
+
+  # ── overlays that come from other flakes -----------------------------
+  externalOverlays = {
+    gen-luarc = inputs.gen-luarc.overlays.default;
+  };
+
+  overlayAttrs = fileOverlays // externalOverlays;
+  overlayList  = lib.attrValues overlayAttrs;
 in
 {
-  # 1️⃣  surfaces overlays to the outside world (so another flake can do
-  #     `inputs.self.overlays.neovim`)
+  ## 1. expose them to the outside world  ────────────────────────────────
   flake.overlays = overlayAttrs;
 
-  # 2️⃣  makes `allOverlays` available as an argument to every other
-  #     flake-parts module in *this* repo
-  config._module.args.allOverlays = overlayList;
+  ## 2. make them available to *other* flake-parts modules in this repo
+  _module.args.allOverlays = overlayList;
 }
