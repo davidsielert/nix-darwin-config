@@ -1,4 +1,5 @@
 🧪  Building nix-darwin system for mbp14 …
+warning: Git tree '/Users/davidsielert/nix' is dirty
 Using saved setting for 'extra-substituters = https://cache.nixos.org?priority=10 https://nyx.chaotic.cx https://hyprland.cachix.org https://nix-community.cachix.org https://yazi.cachix.org' from ~/.local/share/nix/trusted-settings.json.
 Using saved setting for 'extra-trusted-public-keys = nix-community.cachix.org-1:iH5YI1D3vds8ILsPzQXTrCG/tvY1pG+sGbGjfm6u5gI= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=' from ~/.local/share/nix/trusted-settings.json.
 error:

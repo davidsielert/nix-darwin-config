@@ -9,7 +9,7 @@
     ./git.nix
     ./starship.nix
     #./nvf.nix
-    ./programs/terminal
+    ../../home/programs/terminal
     # nvf.homeManagerModules.default
     inputs.mac-app-util.homeManagerModules.default
   ];

@@ -31,7 +31,7 @@ let
         ({ config, ... }: {
           home-manager.useGlobalPkgs   = true;
           home-manager.useUserPackages = true;
-          home-manager.users.davidsielert.imports = [ ../../home ];
+          home-manager.users.davidsielert.imports = [ ./../hosts/${name}/home.nix ];
         })
       ];
     };
