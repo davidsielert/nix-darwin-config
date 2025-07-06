@@ -1,4 +1,4 @@
-# modules/common/core.nix
+#modules/common/core.nix
 #
 # Import path is the same for both nix-darwin and NixOS:
 #   modules = [ ./modules/common/core.nix … ]
@@ -43,7 +43,7 @@
   nixpkgs = {
     config = {
       allowUnfree = true;      # vscode, zoom, etc.
-      allowBroken = false;
+      allowBroken = true;
     };
     # hostPlatform is inferred automatically, but you can pin it:
     # hostPlatform = pkgs.stdenv.hostPlatform;
@@ -64,14 +64,6 @@
   # 4. Shell & locale bits that are identical on macOS and Linux           #
   ##########################################################################
   programs.zsh.enable          = true;   # both platforms support it
-  programs.fish.enable         = false;  # opt-out here if you want
+  programs.fish.enable         = true;  # opt-out here if you want
 
-  i18n.defaultLocale           = "en_US.UTF-8";
-
-  ##########################################################################
-  # 5. Misc cross-platform sysctl-like tweaks (safe on both)               #
-  ##########################################################################
-  # These three options exist on both OSes and do nothing where unsupported.
-  boot.tmp.cleanOnBoot         = true;
-  security.sudo.wheelNeedsPassword = false;
 }

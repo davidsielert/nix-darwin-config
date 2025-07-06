@@ -42,14 +42,6 @@
   ];
 
   ########################################################################
-  # 5. Hardware / power-management tweaks (laptop only)
-  ########################################################################
-  system.defaults.energysaver = {
-    "AutomaticRestartOnPowerLoss" = 1;
-    "DisplaySleepTimer"           = 5;   # minutes on AC
-  };
-
-  ########################################################################
   # 6. Touch ID sudo
   ########################################################################
   security.pam.enableSudoTouchIdAuth = true;

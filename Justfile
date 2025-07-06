@@ -32,6 +32,17 @@ darwin-debug: darwin-set-proxy
 
   ./result/sw/bin/darwin-rebuild switch --flake .#{{hostname}} --show-trace --verbose
 
+
+validate-mbp14:
+    #! /usr/bin/env bash
+    set -euo pipefail
+
+    echo "🧪  Building nix-darwin system for mbp14 …"
+    NIXPKGS_ALLOW_UNFREE=1 \
+      nix build .#darwinConfigurations.mbp14.system \
+        --extra-experimental-features 'nix-command flakes pipe-operators' \
+        --impure --show-trace
+    echo "✅  Build completed — configuration is valid."
 ############################################################################
 #
 #  nix related commands

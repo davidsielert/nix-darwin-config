@@ -101,13 +101,4 @@
     # pkgs.istioctl
   ];
 
-  ######################################################################
-  ## 8. Launchd / services tweaks                                    #
-  ######################################################################
-  # Example: speed up the Spotlight metadata import so Nix store
-  # paths are searchable quicker.
-  services.spotlight = {
-    enable = true;
-    indexOnLowPowerDevices = false;
-  };
-}
+  }
