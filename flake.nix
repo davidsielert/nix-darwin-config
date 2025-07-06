@@ -20,6 +20,7 @@
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:iH5YI1D3vds8ILsPzQXTrCG/tvY1pG+sGbGjfm6u5gI="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
 
@@ -51,8 +52,8 @@
   };
 
   outputs = inputs @ {flake-parts, ...}:
+
     flake-parts.lib.mkFlake {inherit inputs;} {
-      imports = [./args.nix];
       systems = ["aarch64-darwin"];
 
       flake = let
@@ -65,12 +66,12 @@
         neovim-overlay = import ./nix/neovim-overlay.nix {inherit inputs;};
         # Your custom overlay
         myOverlays = self: super: {
-          eslint = super.nodePackages.eslint or null;
+          #eslint = super.nodePackages.eslint or null;
           nodejs = super.nodejs.overrideAttrs (old: {doCheck = false;});
           nodejs-slim = super.nodejs-slim.overrideAttrs (old: {doCheck = false;});
           biome = inputs.biome-pinned.legacyPackages.${self.system}.biome;
           tailwindcss-language-server =
-    inputs.nixpkgs-unstable.legacyPackages.${self.system}.tailwindcss-language-server;
+            inputs.nixpkgs-unstable.legacyPackages.${self.system}.tailwindcss-language-server;
         };
 
         # Include both your overlay and the gen-luarc default overlay
