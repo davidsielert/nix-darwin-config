@@ -56,8 +56,8 @@
       ### 2. pull your own sub-modules in #################################
       imports = [
         # every file in flakeModules/ is a normal flake-parts module
-        ./flakeModules/hosts.nix        # ← emits all *Configurations
         ./flakeModules/overlays.nix     # ← if you want
+        ./flakeModules/hosts.nix        # ← emits all *Configurations
       ];
 
       ### 3. if you use a helper like easy-hosts / ez-configs #############

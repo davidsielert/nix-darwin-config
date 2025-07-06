@@ -9,7 +9,11 @@ let
     fedora-laptop = { system = "x86_64-linux"; hmOnly = true; };
   };
 
-  pkgsFor = system: import inputs.nixpkgs { inherit system; overlays = allOverlays; config.allowUnfree = true; };
+  pkgsFor = system: import inputs.nixpkgs { 
+  inherit system; 
+  overlays = allOverlays; 
+  config.allowUnfree = true; 
+  };
 
   # convenience builders --------------------------------------------------
   mkHM = name: cfg:
