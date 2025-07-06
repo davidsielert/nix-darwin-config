@@ -1,5 +1,5 @@
 # flakeModules/hosts.nix
-{ self, inputs, lib, ... }:
+{ self, inputs, lib, allOverlays, ... }:
 
 let
   # declarative list of machines
@@ -9,7 +9,7 @@ let
     fedora-laptop = { system = "x86_64-linux"; hmOnly = true; };
   };
 
-  pkgsFor = system: import inputs.nixpkgs { inherit system; overlays = self.overlays; config.allowUnfree = true; };
+  pkgsFor = system: import inputs.nixpkgs { inherit system; overlays = allOverlays; config.allowUnfree = true; };
 
   # convenience builders --------------------------------------------------
   mkHM = name: cfg:
@@ -31,6 +31,11 @@ let
         ({ config, ... }: {
           home-manager.useGlobalPkgs   = true;
           home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { 
+          inherit inputs; 
+            username = "davidsielert"; 
+
+          };
           home-manager.users.davidsielert.imports = [ ./../hosts/${name}/home.nix ];
         })
       ];

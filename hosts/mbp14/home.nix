@@ -1,6 +1,5 @@
 {
   username,
-  nvf,
   ...
 } @ inputs: {
   # import sub modules
