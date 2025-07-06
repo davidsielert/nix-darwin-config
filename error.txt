@@ -1,0 +1,1150 @@
+🧪  Building nix-darwin system for mbp14 …
+Using saved setting for 'extra-substituters = https://cache.nixos.org?priority=10 https://nyx.chaotic.cx https://hyprland.cachix.org https://nix-community.cachix.org https://yazi.cachix.org' from ~/.local/share/nix/trusted-settings.json.
+Using saved setting for 'extra-trusted-public-keys = nix-community.cachix.org-1:iH5YI1D3vds8ILsPzQXTrCG/tvY1pG+sGbGjfm6u5gI= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=' from ~/.local/share/nix/trusted-settings.json.
+error:
+       … from call site
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/eval-config.nix:92:12:
+           91|
+           92|   system = eval.config.system.build.toplevel;
+             |            ^
+           93| }
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1182:17:
+         1181|         mapAttrs (
+         1182|           name: value:
+             |                 ^
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1183:85:
+         1182|           name: value:
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1184|         );
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:273:71:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          274|
+
+       … while evaluating the attribute 'value'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:992:7:
+          991|     // {
+          992|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+          993|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `system.build':
+
+       … while evaluating the attribute 'mergedValue'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1033:5:
+         1032|     # Type-check the remaining definitions, and merge them. Or throw if no definitions.
+         1033|     mergedValue =
+             |     ^
+         1034|       if isDefined then
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1036:11:
+         1035|         if all (def: type.check def.value) defsFinal then
+         1036|           type.merge loc defsFinal
+             |           ^
+         1037|         else
+
+       … while calling 'merge'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:653:18:
+          652|           merge =
+          653|             loc: defs:
+             |                  ^
+          654|             mapAttrs (n: v: v.value) (
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:654:13:
+          653|             loc: defs:
+          654|             mapAttrs (n: v: v.value) (
+             |             ^
+          655|               filterAttrs (n: v: v ? value) (
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:655:15:
+          654|             mapAttrs (n: v: v.value) (
+          655|               filterAttrs (n: v: v ? value) (
+             |               ^
+          656|                 zipAttrsWith (name: defs: (mergeDefinitions (loc ++ [ name ]) elemType defs).optionalValue)
+
+       … while calling 'filterAttrs'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:657:23:
+          656|   */
+          657|   filterAttrs = pred: set: removeAttrs set (filter (name: !pred name set.${name}) (attrNames set));
+             |                       ^
+          658|
+
+       … while calling the 'removeAttrs' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:657:28:
+          656|   */
+          657|   filterAttrs = pred: set: removeAttrs set (filter (name: !pred name set.${name}) (attrNames set));
+             |                            ^
+          658|
+
+       … while calling the 'filter' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:657:45:
+          656|   */
+          657|   filterAttrs = pred: set: removeAttrs set (filter (name: !pred name set.${name}) (attrNames set));
+             |                                             ^
+          658|
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:657:53:
+          656|   */
+          657|   filterAttrs = pred: set: removeAttrs set (filter (name: !pred name set.${name}) (attrNames set));
+             |                                                     ^
+          658|
+
+       … in the argument of the not operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:657:60:
+          656|   */
+          657|   filterAttrs = pred: set: removeAttrs set (filter (name: !pred name set.${name}) (attrNames set));
+             |                                                            ^
+          658|
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:657:60:
+          656|   */
+          657|   filterAttrs = pred: set: removeAttrs set (filter (name: !pred name set.${name}) (attrNames set));
+             |                                                            ^
+          658|
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:655:31:
+          654|             mapAttrs (n: v: v.value) (
+          655|               filterAttrs (n: v: v ? value) (
+             |                               ^
+          656|                 zipAttrsWith (name: defs: (mergeDefinitions (loc ++ [ name ]) elemType defs).optionalValue)
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:657:70:
+          656|   */
+          657|   filterAttrs = pred: set: removeAttrs set (filter (name: !pred name set.${name}) (attrNames set));
+             |                                                                      ^
+          658|
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:656:37:
+          655|               filterAttrs (n: v: v ? value) (
+          656|                 zipAttrsWith (name: defs: (mergeDefinitions (loc ++ [ name ]) elemType defs).optionalValue)
+             |                                     ^
+          657|                   # Push down position info.
+
+       … while evaluating the attribute 'optionalValue'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1050:5:
+         1049|
+         1050|     optionalValue = if isDefined then { value = mergedValue; } else { };
+             |     ^
+         1051|   };
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1050:21:
+         1049|
+         1050|     optionalValue = if isDefined then { value = mergedValue; } else { };
+             |                     ^
+         1051|   };
+
+       … while evaluating the attribute 'values'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1027:9:
+         1026|       {
+         1027|         values = defs''';
+             |         ^
+         1028|         inherit (defs'') highestPrio;
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1021:11:
+         1020|           # Avoid sorting if we don't have to.
+         1021|           if any (def: def.value._type or "" == "order") defs''.values then
+             |           ^
+         1022|             sortProperties defs''.values
+
+       … while calling the 'any' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1021:14:
+         1020|           # Avoid sorting if we don't have to.
+         1021|           if any (def: def.value._type or "" == "order") defs''.values then
+             |              ^
+         1022|             sortProperties defs''.values
+
+       … while evaluating the attribute 'values'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1136:7:
+         1135|     {
+         1136|       values = concatMap (def: if getPrio def == highestPrio then [ (strip def) ] else [ ]) defs;
+             |       ^
+         1137|       inherit highestPrio;
+
+       … while calling the 'concatMap' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1136:16:
+         1135|     {
+         1136|       values = concatMap (def: if getPrio def == highestPrio then [ (strip def) ] else [ ]) defs;
+             |                ^
+         1137|       inherit highestPrio;
+
+       … while calling the 'concatMap' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1007:17:
+         1006|         # Process mkMerge and mkIf properties.
+         1007|         defs' = concatMap (
+             |                 ^
+         1008|           m:
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1008:11:
+         1007|         defs' = concatMap (
+         1008|           m:
+             |           ^
+         1009|           map (value: {
+
+       … while calling the 'map' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1009:11:
+         1008|           m:
+         1009|           map (value: {
+             |           ^
+         1010|             inherit (m) file;
+
+       … while evaluating definitions from `/nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/environment':
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1012:81:
+         1011|             inherit value;
+         1012|           }) (addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+             |                                                                                 ^
+         1013|         ) defs;
+
+       … while calling 'dischargeProperties'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1093:5:
+         1092|   dischargeProperties =
+         1093|     def:
+             |     ^
+         1094|     if def._type or "" == "merge" then
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1094:5:
+         1093|     def:
+         1094|     if def._type or "" == "merge" then
+             |     ^
+         1095|       concatMap dischargeProperties def.contents
+
+       … while evaluating the attribute 'value'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:663:25:
+          662|                         inherit (def) file;
+          663|                         value = v;
+             |                         ^
+          664|                       }) def.value
+
+       … from call site
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/environment/default.nix:204:35:
+          203|
+          204|     system.build.setEnvironment = pkgs.writeText "set-environment" ''
+             |                                   ^
+          205|       # Prevent this file from being sourced by child shells.
+
+       … while calling 'writeText'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/pkgs/build-support/trivial-builders/default.nix:166:11:
+          165|   writeText =
+          166|     name: text:
+             |           ^
+          167|     # TODO: To fully deprecate, replace the assertion with `lib.isString` and remove the warning
+
+       … in the condition of the assert statement
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/pkgs/build-support/trivial-builders/default.nix:168:5:
+          167|     # TODO: To fully deprecate, replace the assertion with `lib.isString` and remove the warning
+          168|     assert lib.assertMsg (lib.strings.isConvertibleWithToString text)
+             |     ^
+          169|       ''pkgs.writeText ${lib.strings.escapeNixString name}: The second argument should be a string, but it's a ${builtins.typeOf text} instead.'';
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/pkgs/build-support/trivial-builders/default.nix:168:12:
+          167|     # TODO: To fully deprecate, replace the assertion with `lib.isString` and remove the warning
+          168|     assert lib.assertMsg (lib.strings.isConvertibleWithToString text)
+             |            ^
+          169|       ''pkgs.writeText ${lib.strings.escapeNixString name}: The second argument should be a string, but it's a ${builtins.typeOf text} instead.'';
+
+       … while calling 'assertMsg'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/asserts.nix:39:21:
+           38|   # TODO(Profpatsch): add tests that check stderr
+           39|   assertMsg = pred: msg: pred || builtins.throw msg;
+             |                     ^
+           40|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/asserts.nix:39:31:
+           38|   # TODO(Profpatsch): add tests that check stderr
+           39|   assertMsg = pred: msg: pred || builtins.throw msg;
+             |                               ^
+           40|
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/pkgs/build-support/trivial-builders/default.nix:168:27:
+          167|     # TODO: To fully deprecate, replace the assertion with `lib.isString` and remove the warning
+          168|     assert lib.assertMsg (lib.strings.isConvertibleWithToString text)
+             |                           ^
+          169|       ''pkgs.writeText ${lib.strings.escapeNixString name}: The second argument should be a string, but it's a ${builtins.typeOf text} instead.'';
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2339:5:
+         2338|     in
+         2339|     x: isStringLike x || elem (typeOf x) types || (isList x && lib.all isConvertibleWithToString x);
+             |     ^
+         2340|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2339:48:
+         2338|     in
+         2339|     x: isStringLike x || elem (typeOf x) types || (isList x && lib.all isConvertibleWithToString x);
+             |                                                ^
+         2340|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2339:23:
+         2338|     in
+         2339|     x: isStringLike x || elem (typeOf x) types || (isList x && lib.all isConvertibleWithToString x);
+             |                       ^
+         2340|
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2339:8:
+         2338|     in
+         2339|     x: isStringLike x || elem (typeOf x) types || (isList x && lib.all isConvertibleWithToString x);
+             |        ^
+         2340|
+
+       … while calling 'isStringLike'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2359:18:
+         2358|   */
+         2359|   isStringLike = x: isString x || isPath x || x ? outPath || x ? __toString;
+             |                  ^
+         2360|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2359:59:
+         2358|   */
+         2359|   isStringLike = x: isString x || isPath x || x ? outPath || x ? __toString;
+             |                                                           ^
+         2360|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2359:44:
+         2358|   */
+         2359|   isStringLike = x: isString x || isPath x || x ? outPath || x ? __toString;
+             |                                            ^
+         2360|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2359:32:
+         2358|   */
+         2359|   isStringLike = x: isString x || isPath x || x ? outPath || x ? __toString;
+             |                                ^
+         2360|
+
+       … while calling the 'isString' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:2359:21:
+         2358|   */
+         2359|   isStringLike = x: isString x || isPath x || x ? outPath || x ? __toString;
+             |                     ^
+         2360|
+
+       … from call site
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/environment/default.nix:208:21:
+          207|
+          208|       export PATH=${config.environment.systemPath}
+             |                     ^
+          209|       ${concatStringsSep "\n" exportVariables}
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1182:17:
+         1181|         mapAttrs (
+         1182|           name: value:
+             |                 ^
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1183:85:
+         1182|           name: value:
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1184|         );
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:273:71:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          274|
+
+       … while evaluating the attribute 'value'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:992:7:
+          991|     // {
+          992|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+          993|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `environment.systemPath':
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:983:35:
+          982|       # yield a value computed from the definitions
+          983|       value = if opt ? apply then opt.apply res.mergedValue else res.mergedValue;
+             |                                   ^
+          984|
+
+       … while calling 'apply'
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/environment/default.nix:47:15:
+           46|       description = "The set of paths that are added to PATH.";
+           47|       apply = x: if isList x then makeDrvBinPath x else x;
+             |               ^
+           48|     };
+
+       … while evaluating a branch condition
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/environment/default.nix:47:18:
+           46|       description = "The set of paths that are added to PATH.";
+           47|       apply = x: if isList x then makeDrvBinPath x else x;
+             |                  ^
+           48|     };
+
+       … while calling the 'isList' builtin
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/environment/default.nix:47:21:
+           46|       description = "The set of paths that are added to PATH.";
+           47|       apply = x: if isList x then makeDrvBinPath x else x;
+             |                     ^
+           48|     };
+
+       … while evaluating the attribute 'mergedValue'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1033:5:
+         1032|     # Type-check the remaining definitions, and merge them. Or throw if no definitions.
+         1033|     mergedValue =
+             |     ^
+         1034|       if isDefined then
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1036:11:
+         1035|         if all (def: type.check def.value) defsFinal then
+         1036|           type.merge loc defsFinal
+             |           ^
+         1037|         else
+
+       … while calling 'merge'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:600:18:
+          599|           merge =
+          600|             loc: defs:
+             |                  ^
+          601|             map (x: x.value) (
+
+       … while calling the 'map' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:601:13:
+          600|             loc: defs:
+          601|             map (x: x.value) (
+             |             ^
+          602|               filter (x: x ? value) (
+
+       … while calling the 'filter' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:602:15:
+          601|             map (x: x.value) (
+          602|               filter (x: x ? value) (
+             |               ^
+          603|                 concatLists (
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:602:23:
+          601|             map (x: x.value) (
+          602|               filter (x: x ? value) (
+             |                       ^
+          603|                 concatLists (
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:602:26:
+          601|             map (x: x.value) (
+          602|               filter (x: x ? value) (
+             |                          ^
+          603|                 concatLists (
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/lists.nix:345:29:
+          344|   */
+          345|   imap1 = f: list: genList (n: f (n + 1) (elemAt list n)) (length list);
+             |                             ^
+          346|
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/lists.nix:345:32:
+          344|   */
+          345|   imap1 = f: list: genList (n: f (n + 1) (elemAt list n)) (length list);
+             |                                ^
+          346|
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:607:26:
+          606|                     imap1 (
+          607|                       m: def':
+             |                          ^
+          608|                       (mergeDefinitions (loc ++ [ "[definition ${toString n}-entry ${toString m}]" ]) elemType [
+
+       (14 duplicate frames omitted)
+
+       … while evaluating the attribute 'value'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:611:27:
+          610|                           inherit (def) file;
+          611|                           value = def';
+             |                           ^
+          612|                         }
+
+       … while calling the 'elemAt' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/lists.nix:345:43:
+          344|   */
+          345|   imap1 = f: list: genList (n: f (n + 1) (elemAt list n)) (length list);
+             |                                           ^
+          346|
+
+       … from call site
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/environment/default.nix:163:10:
+          162|     environment.systemPath = mkMerge [
+          163|       [ (makeBinPath cfg.profiles) ]
+             |          ^
+          164|       (mkOrder 1200 [ "/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin" ])
+
+       … while calling 'makeSearchPathOutput'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:503:21:
+          502|   makeSearchPathOutput =
+          503|     output: subDir: pkgs:
+             |                     ^
+          504|     makeSearchPath subDir (map (lib.getOutput output) pkgs);
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:504:5:
+          503|     output: subDir: pkgs:
+          504|     makeSearchPath subDir (map (lib.getOutput output) pkgs);
+             |     ^
+          505|
+
+       … while calling 'makeSearchPath'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:465:13:
+          464|   makeSearchPath =
+          465|     subDir: paths: concatStringsSep ":" (map (path: path + "/" + subDir) (filter (x: x != null) paths));
+             |             ^
+          466|
+
+       … while calling the 'concatStringsSep' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:465:20:
+          464|   makeSearchPath =
+          465|     subDir: paths: concatStringsSep ":" (map (path: path + "/" + subDir) (filter (x: x != null) paths));
+             |                    ^
+          466|
+
+       … while calling the 'map' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:465:42:
+          464|   makeSearchPath =
+          465|     subDir: paths: concatStringsSep ":" (map (path: path + "/" + subDir) (filter (x: x != null) paths));
+             |                                          ^
+          466|
+
+       … while calling the 'filter' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:465:75:
+          464|   makeSearchPath =
+          465|     subDir: paths: concatStringsSep ":" (map (path: path + "/" + subDir) (filter (x: x != null) paths));
+             |                                                                           ^
+          466|
+
+       … while calling the 'map' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/strings.nix:504:28:
+          503|     output: subDir: pkgs:
+          504|     makeSearchPath subDir (map (lib.getOutput output) pkgs);
+             |                            ^
+          505|
+
+       … from call site
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/environment/default.nix:163:22:
+          162|     environment.systemPath = mkMerge [
+          163|       [ (makeBinPath cfg.profiles) ]
+             |                      ^
+          164|       (mkOrder 1200 [ "/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin" ])
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1182:17:
+         1181|         mapAttrs (
+         1182|           name: value:
+             |                 ^
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1183:85:
+         1182|           name: value:
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1184|         );
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:273:71:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          274|
+
+       … while evaluating the attribute 'value'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:992:7:
+          991|     // {
+          992|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+          993|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `environment.profiles':
+
+       … while evaluating the attribute 'mergedValue'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1033:5:
+         1032|     # Type-check the remaining definitions, and merge them. Or throw if no definitions.
+         1033|     mergedValue =
+             |     ^
+         1034|       if isDefined then
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1034:7:
+         1033|     mergedValue =
+         1034|       if isDefined then
+             |       ^
+         1035|         if all (def: type.check def.value) defsFinal then
+
+       (8 duplicate frames omitted)
+
+       … while evaluating definitions from `/nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/users':
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1012:81:
+         1011|             inherit value;
+         1012|           }) (addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+             |                                                                                 ^
+         1013|         ) defs;
+
+       … while calling 'dischargeProperties'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1093:5:
+         1092|   dischargeProperties =
+         1093|     def:
+             |     ^
+         1094|     if def._type or "" == "merge" then
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1097:7:
+         1096|     else if def._type or "" == "if" then
+         1097|       if isBool def.condition then
+             |       ^
+         1098|         if def.condition then dischargeProperties def.content else [ ]
+
+       … while calling the 'isBool' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1097:10:
+         1096|     else if def._type or "" == "if" then
+         1097|       if isBool def.condition then
+             |          ^
+         1098|         if def.condition then dischargeProperties def.content else [ ]
+
+       … while evaluating the attribute 'condition'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1220:13:
+         1219|     _type = "if";
+         1220|     inherit condition content;
+             |             ^
+         1221|   };
+
+       … from call site
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/users/default.nix:28:18:
+           27|
+           28|   packageUsers = filterAttrs (_: u: u.packages != []) cfg.users;
+             |                  ^
+           29|
+
+       (6 duplicate frames omitted)
+
+       … while calling anonymous lambda
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/users/default.nix:28:34:
+           27|
+           28|   packageUsers = filterAttrs (_: u: u.packages != []) cfg.users;
+             |                                  ^
+           29|
+
+       … from call site
+         at /nix/store/hj63xfp2c7gadsap3xs2av7c6py4rz07-source/modules/users/default.nix:28:37:
+           27|
+           28|   packageUsers = filterAttrs (_: u: u.packages != []) cfg.users;
+             |                                     ^
+           29|
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1182:17:
+         1181|         mapAttrs (
+         1182|           name: value:
+             |                 ^
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1183:85:
+         1182|           name: value:
+         1183|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1184|         );
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:273:71:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          274|
+
+       … while evaluating the attribute 'value'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:992:7:
+          991|     // {
+          992|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+          993|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `users.users.davidsielert.packages':
+
+       (20 duplicate frames omitted)
+
+       … while evaluating definitions from `/nix/store/xcqyjkljvvi1qk78la2vh5b783yzs7wl-source/nixos/common.nix':
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1012:81:
+         1011|             inherit value;
+         1012|           }) (addErrorContext "while evaluating definitions from `${m.file}':" (dischargeProperties m.value))
+             |                                                                                 ^
+         1013|         ) defs;
+
+       … while calling 'dischargeProperties'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1093:5:
+         1092|   dischargeProperties =
+         1093|     def:
+             |     ^
+         1094|     if def._type or "" == "merge" then
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1094:5:
+         1093|     def:
+         1094|     if def._type or "" == "merge" then
+             |     ^
+         1095|       concatMap dischargeProperties def.contents
+
+       … while evaluating the attribute 'value'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:611:27:
+          610|                           inherit (def) file;
+          611|                           value = def';
+             |                           ^
+          612|                         }
+
+       … while calling the 'elemAt' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/lists.nix:345:43:
+          344|   */
+          345|   imap1 = f: list: genList (n: f (n + 1) (elemAt list n)) (length list);
+             |                                           ^
+          346|
+
+       … from call site
+         at /nix/store/xcqyjkljvvi1qk78la2vh5b783yzs7wl-source/nixos/common.nix:110:54:
+          109|       users.users =
+          110|         (mapAttrs (username: usercfg: { packages = [ usercfg.home.path ]; })
+             |                                                      ^
+          111|           cfg.users);
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:654:26:
+          653|             loc: defs:
+          654|             mapAttrs (n: v: v.value) (
+             |                          ^
+          655|               filterAttrs (n: v: v ? value) (
+
+       … while evaluating the attribute 'value'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1050:41:
+         1049|
+         1050|     optionalValue = if isDefined then { value = mergedValue; } else { };
+             |                                         ^
+         1051|   };
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:1036:11:
+         1035|         if all (def: type.check def.value) defsFinal then
+         1036|           type.merge loc defsFinal
+             |           ^
+         1037|         else
+
+       … while calling 'merge'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/types.nix:1082:18:
+         1081|           merge =
+         1082|             loc: defs:
+             |                  ^
+         1083|             (base.extendModules {
+
+       … while evaluating the attribute 'config'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:360:9:
+          359|         options = checked options;
+          360|         config = checked (removeAttrs config [ "_module" ]);
+             |         ^
+          361|         _module = checked (config._module);
+
+       … while calling the 'seq' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:360:18:
+          359|         options = checked options;
+          360|         config = checked (removeAttrs config [ "_module" ]);
+             |                  ^
+          361|         _module = checked (config._module);
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:295:9:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |         ^
+          296|           let
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:295:72:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |                                                                        ^
+          296|           let
+
+       … in the left operand of the AND (&&) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:295:33:
+          294|       checkUnmatched =
+          295|         if config._module.check && config._module.freeformType == null && merged.unmatchedDefns != [ ] then
+             |                                 ^
+          296|           let
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:286:9:
+          285|         in
+          286|         if declaredConfig._module.freeformType == null then
+             |         ^
+          287|           declaredConfig
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:273:28:
+          272|           # For definitions that have an associated option
+          273|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                            ^
+          274|
+
+       … while calling 'mapAttrsRecursiveCond'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1177:14:
+         1176|   mapAttrsRecursiveCond =
+         1177|     cond: f: set:
+             |              ^
+         1178|     let
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/attrsets.nix:1186:5:
+         1185|     in
+         1186|     recurse [ ] set;
+             |     ^
+         1187|
+
+       … while evaluating the attribute 'matchedOptions'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:819:15:
+          818|     {
+          819|       inherit matchedOptions;
+             |               ^
+          820|
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:809:24:
+          808|
+          809|       matchedOptions = mapAttrs (n: v: v.matchedOptions) resultsByName;
+             |                        ^
+          810|
+
+       … while calling the 'mapAttrs' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:757:23:
+          756|
+          757|       resultsByName = mapAttrs (
+             |                       ^
+          758|         name: decls:
+
+       … while calling the 'zipAttrsWith' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:669:21:
+          668|       # an attrset 'name' => list of submodules that declare ‘name’.
+          669|       declsByName = zipAttrsWith (n: concatLists) (
+             |                     ^
+          670|         map (
+
+       … while calling the 'map' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:670:9:
+          669|       declsByName = zipAttrsWith (n: concatLists) (
+          670|         map (
+             |         ^
+          671|           module:
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:265:30:
+          264|         in
+          265|         mergeModules prefix (reverseList collected);
+             |                              ^
+          266|
+
+       … while calling 'reverseList'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/lists.nix:1103:5:
+         1102|   reverseList =
+         1103|     xs:
+             |     ^
+         1104|     let
+
+       … while calling the 'genList' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/lists.nix:1107:5:
+         1106|     in
+         1107|     genList (n: elemAt xs (l - n - 1)) l;
+             |     ^
+         1108|
+
+       … while evaluating the second argument passed to builtins.genList
+
+       … while calling the 'length' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/lists.nix:1105:11:
+         1104|     let
+         1105|       l = length xs;
+             |           ^
+         1106|     in
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:251:13:
+          250|           collected =
+          251|             collectModules class (specialArgs.modulesPath or "") (regularModules ++ [ internalModule ])
+             |             ^
+          252|               (
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:517:34:
+          516|     in
+          517|     modulesPath: initialModules: args:
+             |                                  ^
+          518|     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:518:5:
+          517|     modulesPath: initialModules: args:
+          518|     filterModules modulesPath (collectStructuredModules unknownModule "" initialModules args);
+             |     ^
+          519|
+
+       … while calling 'filterModules'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:487:9:
+          486|         modulesPath:
+          487|         { disabled, modules }:
+             |         ^
+          488|         let
+
+       … while calling the 'map' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:511:9:
+          510|         in
+          511|         map (attrs: attrs.module) (genericClosure {
+             |         ^
+          512|           startSet = keyFilter modules;
+
+       … while calling the 'genericClosure' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:511:36:
+          510|         in
+          511|         map (attrs: attrs.module) (genericClosure {
+             |                                    ^
+          512|           startSet = keyFilter modules;
+
+       … while calling the 'filter' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:512:22:
+          511|         map (attrs: attrs.module) (genericClosure {
+          512|           startSet = keyFilter modules;
+             |                      ^
+          513|           operator = attrs: keyFilter attrs.modules;
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:509:31:
+          508|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          509|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                               ^
+          510|         in
+
+       … in the argument of the not operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:509:39:
+          508|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          509|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                                       ^
+          510|         in
+
+       … while calling the 'elem' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:509:39:
+          508|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+          509|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+             |                                       ^
+          510|         in
+
+       … while calling the 'concatMap' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:508:26:
+          507|
+          508|           disabledKeys = concatMap ({ file, disabled }: map (moduleKey file) disabled) disabled;
+             |                          ^
+          509|           keyFilter = filter (attrs: !elem attrs.key disabledKeys);
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:448:24:
+          447|           collectResults = modules: {
+          448|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          449|             inherit modules;
+
+       … while evaluating the attribute 'disabled'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:448:13:
+          447|           collectResults = modules: {
+          448|             disabled = concatLists (catAttrs "disabled" modules);
+             |             ^
+          449|             inherit modules;
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:448:24:
+          447|           collectResults = modules: {
+          448|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          449|             inherit modules;
+
+       … while evaluating the attribute 'disabled'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:448:13:
+          447|           collectResults = modules: {
+          448|             disabled = concatLists (catAttrs "disabled" modules);
+             |             ^
+          449|             inherit modules;
+
+       … while calling the 'concatLists' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:448:24:
+          447|           collectResults = modules: {
+          448|             disabled = concatLists (catAttrs "disabled" modules);
+             |                        ^
+          449|             inherit modules;
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:466:19:
+          465|                 (
+          466|                   if module.disabledModules != [ ] then
+             |                   ^
+          467|                     [
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:457:24:
+          456|             let
+          457|               module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                        ^
+          458|               collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling anonymous lambda
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:412:11:
+          411|         if class != null then
+          412|           m:
+             |           ^
+          413|           if m._class != null -> m._class == class then
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:413:11:
+          412|           m:
+          413|           if m._class != null -> m._class == class then
+             |           ^
+          414|             m
+
+       … in the left operand of the IMPL (->) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:413:31:
+          412|           m:
+          413|           if m._class != null -> m._class == class then
+             |                               ^
+          414|             m
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:457:37:
+          456|             let
+          457|               module = checkModule (loadModule args parentFile "${parentKey}:anon-${toString n}" x);
+             |                                     ^
+          458|               collectedImports = collectStructuredModules module._file module.key module.imports args;
+
+       … while calling 'loadModule'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:378:42:
+          377|       loadModule =
+          378|         args: fallbackFile: fallbackKey: m:
+             |                                          ^
+          379|         if isFunction m then
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:406:11:
+          405|         else
+          406|           unifyModuleSyntax (toString m) (toString m) (
+             |           ^
+          407|             applyModuleArgsIfFunction (toString m) (import m) args
+
+       … while calling 'unifyModuleSyntax'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:531:16:
+          530|   unifyModuleSyntax =
+          531|     file: key: m:
+             |                ^
+          532|     let
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:552:5:
+          551|     in
+          552|     if m ? config || m ? options then
+             |     ^
+          553|       let
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:552:19:
+          551|     in
+          552|     if m ? config || m ? options then
+             |                   ^
+          553|       let
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:407:13:
+          406|           unifyModuleSyntax (toString m) (toString m) (
+          407|             applyModuleArgsIfFunction (toString m) (import m) args
+             |             ^
+          408|           );
+
+       … while calling 'applyModuleArgsIfFunction'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:601:13:
+          600|   applyModuleArgsIfFunction =
+          601|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |             ^
+          602|
+
+       … while evaluating a branch condition
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:601:35:
+          600|   applyModuleArgsIfFunction =
+          601|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |                                   ^
+          602|
+
+       … from call site
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:601:38:
+          600|   applyModuleArgsIfFunction =
+          601|     key: f: args@{ config, ... }: if isFunction f then applyModuleArgs key f args else f;
+             |                                      ^
+          602|
+
+       … while calling 'isFunction'
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/trivial.nix:1023:16:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                ^
+         1024|
+
+       … in the left operand of the OR (||) operator
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/trivial.nix:1023:41:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                                         ^
+         1024|
+
+       … while calling the 'isFunction' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/trivial.nix:1023:19:
+         1022|   */
+         1023|   isFunction = f: builtins.isFunction f || (f ? __functor && isFunction (f.__functor f));
+             |                   ^
+         1024|
+
+       … while calling the 'import' builtin
+         at /nix/store/ya2jssw2nrpkhh9vy1wc2455ck5gcwp5-source/lib/modules.nix:407:53:
+          406|           unifyModuleSyntax (toString m) (toString m) (
+          407|             applyModuleArgsIfFunction (toString m) (import m) args
+             |                                                     ^
+          408|           );
+
+       error: path '/nix/store/home' does not exist
+error: Recipe `validate-mbp14` failed with exit code 1
