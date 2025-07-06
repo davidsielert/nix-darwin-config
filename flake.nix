@@ -56,7 +56,6 @@
       ### 2. pull your own sub-modules in #################################
       imports = [
         # every file in flakeModules/ is a normal flake-parts module
-        ./flakeModules/overlays.nix     # ← if you want
         ./flakeModules/hosts.nix        # ← emits all *Configurations
       ];
 

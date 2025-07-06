@@ -22,7 +22,7 @@
   ##    All keys come from the nix-darwin manual                    ★
   ######################################################################
  
-    system.defaults = {
+    defaults = {
       # menuExtraClock.Show24Hour = true;  # show 24 hour clock
 
       # customize dock
@@ -80,6 +80,16 @@
         NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction(自动拼写检查)
         NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
         NSNavPanelExpandedStateForSaveMode2 = true;
+        "AppleSymbolicHotKeys" = {
+              # 118 = Mission Control (⌃↑)
+              "118" = { enabled = false; value = { type = "standard"; parameters = [ 65535 126 262144 ]; }; };
+
+              # 119 = Application windows (⌃↓)
+              "119" = { enabled = false; value = { type = "standard"; parameters = [ 65535 125 262144 ]; }; };
+
+              # Optional: disable Dashboard (obsolete)
+              # "118" = { enabled = false; value = { type = "standard"; parameters = [ 65535 126 262144 ]; }; };
+            };
       };
 
       # Customize settings that not supported by nix-darwin directly
