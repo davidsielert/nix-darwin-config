@@ -20,10 +20,7 @@ darwin-set-proxy:
 
 [group('desktop')]
 darwin:
-  NIXPKGS_ALLOW_UNFREE=1 nix build .#darwinConfigurations.{{hostname}}.system \
-    --extra-experimental-features 'nix-command flakes' --impure
-
-  ./result/sw/bin/darwin-rebuild switch --flake .#{{hostname}}
+    sudo NIXPKGS_ALLOW_UNFREE=1 darwin-rebuild switch --flake .#mbp14
 
 [group('desktop')]
 darwin-debug: darwin-set-proxy

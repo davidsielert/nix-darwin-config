@@ -59,25 +59,6 @@
     rke
   ];
   programs = {
-    #nvf = {
-    # enable = true;
-    # # your settings need to go into the settings attribute set
-    # # most settings are documented in the appendix
-    # settings = {
-    #   vim.viAlias = false;
-    #   vim.vimAlias = true;
-    #   vim.lsp = {
-    #     enable = true;
-    #   };
-    # };
-    # modern vim
-    #neovim = {
-    #  enable = true;
-    #  defaultEditor = true;
-    #  vimAlias = true;
-    #};
-    # A modern replacement for ‘ls’
-    # useful in bash/zsh prompt, not in nushell.
     eza = {
       enable = true;
       git = true;
@@ -85,8 +66,8 @@
       enableZshIntegration = true;
     };
 
-    # skim provides a single executable: sk.
-    # Basically anywhere you would want to use grep, try sk instead.
+# skim provides a single executable: sk.
+# Basically anywhere you would want to use grep, try sk instead.
     skim = {
       enable = true;
       enableBashIntegration = true;

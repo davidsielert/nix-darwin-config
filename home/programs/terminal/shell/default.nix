@@ -119,7 +119,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
       ZSH_TMUX_AUTOSTART=''${ZSH_TMUX_AUTOSTART:-true}
       ZSH_TMUX_AUTOSTART_ONCE=true

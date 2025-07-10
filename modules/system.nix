@@ -12,7 +12,7 @@
 {
   system = {
     stateVersion = 5;
-    #primaryUser = "david";
+    primaryUser = "dsielert";
     # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
     #activationScripts.postUserActivation.text = ''
       # activateSettings -u will reload the settings from the database and apply them to the current session,
@@ -174,22 +174,14 @@
   # Fonts
   fonts = {
     packages = with pkgs; [
-      # icon fonts
+# icon fonts
       material-design-icons
-      font-awesome
+        font-awesome
+        pkgs.nerd-fonts.jetbrains-mono
+        pkgs.nerd-fonts.symbols-only
+        pkgs.nerd-fonts.fira-code
+        pkgs.nerd-fonts.iosevka
 
-      # nerdfonts
-      # https://github.com/NixOS/nixpkgs/blob/nixos-24.05/pkgs/data/fonts/nerdfonts/shas.nix
-      (nerdfonts.override {
-        fonts = [
-          # symbols icon only
-          "NerdFontsSymbolsOnly"
-          # Characters
-          "FiraCode"
-          "JetBrainsMono"
-          "Iosevka"
-        ];
-      })
     ];
   };
 }
